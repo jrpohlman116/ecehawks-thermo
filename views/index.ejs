@@ -35,18 +35,18 @@
         </div>
       </div>
   </div>
-  <script>
-var socket = io(); //load socket.io-client and connect to the host that serves the page
-window.addEventListener("load", function(){ //when page loads
-  var lightbox = document.getElementById("heat"); 
-  lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
-    socket.emit("heat", Number(this.checked)); //send button status to server (as 1 or 0)
-  });
-});
-socket.on('heat', function (data) { //get button status from client
-  document.getElementById("heat").checked = data; //change checkbox according to push button on Raspberry Pi
-  socket.emit("heat", data); //send push button status to back to server
-});
-</script>
+<!-- 	<script>
+	var socket = io(); //load socket.io-client and connect to the host that serves the page
+	window.addEventListener("load", function(){ //when page loads
+	  var lightbox = document.getElementById("heat"); 
+	  lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
+		socket.emit("heat", Number(this.checked)); //send button status to server (as 1 or 0)
+	  });
+	});
+	socket.on('heat', function (data) { //get button status from client
+	  document.getElementById("heat").checked = data; //change checkbox according to push button on Raspberry Pi
+	  socket.emit("heat", data); //send push button status to back to server
+	});
+	</script> -->
 </body>
 </html>
