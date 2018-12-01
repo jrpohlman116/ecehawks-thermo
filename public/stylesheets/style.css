@@ -1,0 +1,449 @@
+/* NavBar  */
+.app-bar{
+  width: 100%;
+  display: flex;
+  z-index: 1100;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: column;
+  position: static;
+}
+
+#toolbar-homepage{
+  background: #202020;
+  display: flex;
+  width: 100%;
+  height: 53px;
+  padding-top: 5px;
+  padding-left: 5px;
+} 
+
+#date-time{
+  flex: 50%;
+}  
+
+#nav{
+  flex: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#date{
+  color: #FFCD00;
+  display: block;
+  margin-top: 5px;
+  text-align: left;
+  margin-left: 5px;
+} 
+
+#time{
+  color: #FFF;
+  display: block;
+  margin-top: 5px;
+  text-align: left;
+  margin-left: 5px;
+}
+
+#nav-btn{
+  background: #808080;
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 3px 3px black;
+  color: white;
+}
+
+#nav-btn:hover{
+  outline: none;
+  border: none;
+  background: #FFCD00;
+}
+
+.nav-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* https://codepen.io/jpohlman/pen/RqeJGW */
+
+html, body{
+  height: 100%;
+}
+
+body{
+  background: #FFF;
+  font-family: Helvetica Neue;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#screen{
+  background: #000;
+  width: 320px;
+  height: 240px;
+  overflow: hidden;
+}
+  
+h1{
+  font-size: 18px;
+  color: #eee;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  color: white;
+}
+
+p{
+  margin-top: 1em;
+  text-align: center;
+  color: #aaa;
+} 
+  
+.button{
+  background: #808080;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 3px 3px black;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.button:hover{
+  outline: none;
+  border: none;
+  background: #FFCD00;
+}
+
+.button:focus{
+  outline: none;
+  border: none;
+  background: #FFF;
+}
+
+.button:active{
+  outline: none;
+  border: none;
+  background: #FFF;
+} 
+
+#button{
+  background: #808080;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 3px 3px;
+  text-decoration: none;
+}
+
+#button:hover{
+  outline: none;
+  border: none;
+  background: #FFCD00;
+}
+
+#button:focus{
+  outline: none;
+  border: none;
+  background: #FFCD00;
+}
+
+#button:active{
+  outline: none;
+  border: none;
+  background: #FFCD00;
+} 
+ 
+  
+#main-homepage{
+  display: flex;
+  height: 70%;
+} 
+
+#hvac-control{
+  flex: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0 10px 5px;
+}  
+
+.hvac-button{
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 5% 0 5% 10px;
+} 
+
+#temp-container{
+  flex: 30%;
+  height: 100%;
+}  
+
+#curr-temp{
+  color: #FFF;
+  font-size:125px;
+  line-height: 110%;
+  padding: 0;
+  margin: 0;
+}
+
+#scheduler-temp{
+  color: #FFF;
+  font-size:125px;
+  line-height: 110%;
+  padding: 0;
+  margin: 0;
+}
+
+#status-container{
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  background: #4D4D4D;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+#hvac-status-id{
+  color: #FFF;
+  display: inline-block;
+  padding-right: 10px;
+  font-size: 14px;
+}  
+
+#hvac-status{
+  color: #FFCD00;
+  display: inline-block;
+  font-size: 14px;
+}
+
+#adjust-container{
+  flex: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#adjust-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #4D4D4D;
+  width: 85%;
+  height: 133px;
+  margin-left: 20px;
+  border-radius: 10px 0 0 10px;
+}
+
+#desired-temp-label{
+  width: 100%;
+  color: #FFF;
+  font-size: 12px;
+  line-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#desired-temp{
+  width: 100%;
+  color: #FFF;
+  font-size: 30px;
+  line-height: 100%;
+  padding: 0;
+  margin: 0;
+}  
+
+.hold-btn{
+  color: #FFF;
+  font-size: 12px;
+  padding: 0;
+  width: 75%;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 1px 1px #000;
+}  
+
+#arrow-up{
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #FFCD00;
+}  
+
+#arrow-down{
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #FFCD00;
+}
+
+/* Scheduler CSS */
+#main{
+  height: 45%;
+} 
+
+#main-settemp{
+  display: flex;
+  height: 45%;
+} 
+
+#toolbar{
+  background: #000;
+  display: flex;
+  width: 100%;
+  height: 53px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+/* https://codepen.io/jpohlman/pen/LXgaOW */
+
+#schedule-selecter-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}  
+
+.schedule-btn{
+  color: #FFF;
+  font-size: 12px;
+  padding: 0;
+  width: 113px;
+  height: 33px;
+  border-radius: 5px;
+  box-shadow: 1px 1px #000;
+}
+
+/* https://codepen.io/jpohlman/pen/MzPxdK?editors=0100 */
+
+#label{
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left;
+  padding-left: 20px;
+  font-size: 16px;
+  color: white;
+}  
+
+#custom-dial-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}  
+
+#button-container{
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: -20px;
+}  
+
+.back-btn{
+  color: #FFF;
+  background: #808080;
+  font-size: 12px;
+  padding: 0;
+  margin: 10px;
+  width: 20%;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px #000;
+}  
+
+#enable-edit-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 10px;
+}
+
+.next-btn{
+  color: #FFF;
+  background: #FFCD00;
+  font-size: 12px;
+  padding: 0;
+  margin: 10px;
+  width: 20%;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 1px 1px #000;
+}
+
+/* https://codepen.io/jpohlman/pen/BGqEQX?editors=0110 */
+
+#button-container-set-temp{
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 18%;
+}
+
+#adjust-container-scheduler{
+  flex: 15%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+}  
+  
+#adjust-box-scheduler{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 85%;
+  height: 133px;
+  margin-left: 20px;
+  border-radius: 10px 0 0 10px;
+}
+
+#dial-text{
+  color: white;
+  font-size: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#component-wrapper{
+  height: 100%;
+}
+
+#datetime-component-wrapper{
+  height: 100%;
+  position: relative;
+  top: -12%;
+}
+
+#datetime-label{
+  width: 100%;
+  margin-bottom: 0px;
+  text-align: left;
+  padding-left: 20px;
+  font-size: 16px;
+  color: white;
+}  
+
+  
+#main-datetime{
+  height:60%;
+} 
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thermostat</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/javascripts/webserver.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <div id="screen">
+      <% include ./partials/nav.ejs %>
+
+      <div id="main-homepage">
+        <div id="hvac-control">
+          <button class="button hvac-button">Auto</button>
+          <button id="heat" class="button hvac-button" onclick="heatOn()">Heat</button>
+          <button class="button hvac-button">AC</button>
+        </div>
+        <div id="temp-container">
+          <p id="curr-temp">30&#730;</p>
+          <div id="status-container">
+            <p id="hvac-status-id">Status: </p>
+            <p id="hvac-status">Heating On</p>
+          </div>
+        </div>
+        <div id="adjust-container">
+          <div id="adjust-box">
+            <div id="arrow-up"></div>
+            <p id="desired-temp-label">SET TEMP</p>
+            <p id="desired-temp">50&#730;</p>
+            <div id="arrow-down"></div>
+            <button class="button hold-btn">HOLD</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
