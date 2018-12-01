@@ -1,0 +1,63 @@
+{
+  "UTC_offset": "+08",
+  "weekday_setpoints":{
+      "setpoint_1" : {
+          "is_set" : true,
+          "is_active" : true,
+          "time" : "15:00:00",
+          "temperature" : 70,
+          "mode" : "heat"
+      },
+      "setpoint_2" : {
+          "is_set" : true,
+          "is_active" : true,
+          "time" : "08:00:00",
+          "temperature" : 70,
+          "mode" : "auto"
+      },
+      "setpoint_3" : {
+          "is_set" : true,
+          "is_active" : false,
+          "time" : "15:00:00",
+          "temperature" : 70,
+          "mode" : "ac"
+      },
+      "setpoint_4" : {
+          "is_set" : false,
+          "is_active" : null,
+          "time" : null,
+          "temperature" : null,
+          "mode" : null
+      }
+  },
+  "weekend_setpoints":{
+      "setpoint_1" : {
+          "is_set" : true,
+          "is_active" : true,
+          "time" : "15:00:00",
+          "temperature" : 70,
+          "mode" : "heat"
+      },
+      "setpoint_2" : {
+          "is_set" : true,
+          "is_active" : true,
+          "time" : "08:00:00",
+          "temperature" : 70,
+          "mode" : "auto"
+      },
+      "setpoint_3" : {
+          "is_set" : true,
+          "is_active" : false,
+          "time" : "15:00:00",
+          "temperature" : 70,
+          "mode" : "ac"
+      },
+      "setpoint_4" : {
+          "is_set" : false,
+          "is_active" : null,
+          "time" : null,
+          "temperature" : null,
+          "mode" : null
+      }
+  }
+}
