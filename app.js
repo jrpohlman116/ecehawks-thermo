@@ -68,7 +68,9 @@ function getTempandLed(){
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
   i++;
-  return tempF
+  
+  document.getElementById('curr-temp').innerHTML = tempF +  + '\u02DA';
+  var t = setTimeout(getTempandLed, 1000);
 }
 
 

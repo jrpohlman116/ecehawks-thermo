@@ -5,11 +5,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/javascripts/main-page.js"></script>
   <script src="/javascripts/adjust-temp.js"></script>
-  <script src="./app.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <script>
     function startTime() {
-        document.getElementById('curr-temp').innerHTML = getTempandLed() +  + '\u02DA';
         var today = new Date();
         var h = today.getHours();
         var ampm = 'AM'
@@ -37,7 +35,7 @@
   </script>
 </head>
 
-<body onload="startTime()">
+<body onload="startTime();  getTemp();">
   <div id="screen">
       <% include ./partials/nav.ejs %>
 
