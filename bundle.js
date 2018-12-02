@@ -6512,12 +6512,13 @@ module.exports.up = round.bind(null, 'ceil');
 module.exports.down = round.bind(null, 'floor');
 
 },{}],8:[function(require,module,exports){
+
 const sensor = require('ds18b20-raspi');
 
-
 module.exports = function (){
-	const tempF = sensor.readSimpleF();
+	const tempf = sensor.readSimpleF(1);
 	return tempF;
-} 
+}
+
 
 },{"ds18b20-raspi":6}]},{},[8]);

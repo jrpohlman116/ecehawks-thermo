@@ -1,5 +1,5 @@
 
-const sensor = require('ds12b20-raspi');
+const sensor = require('ds18b20-raspi');
 
 module.exports = function (){
 	const tempf = sensor.readSimpleF(1);
