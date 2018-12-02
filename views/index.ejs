@@ -36,7 +36,7 @@
   </script>
 </head>
 
-<body onload="startTime(); tempStuff();">
+<body onload="startTime();">
   <div id="screen">
       <% include ./partials/nav.ejs %>
 
@@ -76,13 +76,13 @@
         </div>
       </div>
   </div>
-  <script src = "../../bundle.js"></script>
   <script>
-    function tempStuff(){
-      const sensor = require('ds18b20-raspi');
-      const tempf = sensor.readSimpleF(1);
-      document.getElementById("curr-temp").innerHTML = tempf;
-      console.log(tempf);
+    var HOST = location.origin.replace(/^http/, 'ws')
+    var ws = new WebSocket(HOST)
+    var el = document.getElementById("curr-temp")
+
+    ws.onmessage = function (event) {
+      el.innerHTML = event.data
     }
   </script>
 </body>

@@ -3,6 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const SocketServer = require('ws').Server;
+var wss = new SocketServer({ server });
+
+wss.on('connection', (ws) => {
+  console.log("Connected")
+  ws.on('close', () => console.log('Disconnected'))
+});
+
+setInterval(() => {
+  tempF = sensor.readSimpleF(1);
+  tempF = Math.round(tempF)
+
+  wss.clients.forEach((client) => {
+    client.send(tempF)
+  })
+}, 2000)
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
