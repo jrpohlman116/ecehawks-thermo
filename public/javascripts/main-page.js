@@ -1,15 +1,3 @@
-const sensor = require('ds18b20-raspi');
-
-function getTemp(){
-  tempF = sensor.readSimpleF(1);
-  tempF = Math.round(tempF)
-
-  console.log(tempF)
-
-  document.getElementById('curr-temp').innerHTML = tempF +  + '\u02DA';
-  var t = setTimeout(getTempandLed, 1000);
-}
-
 function heat() {
     var button = document.getElementById('heat');
     var status = document.getElementById('hvac-status');
