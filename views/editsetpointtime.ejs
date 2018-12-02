@@ -9,15 +9,19 @@
 
 <body>
   <div id="screen">
-      <% include ./partials/nav.1.ejs %>
+    <% include ./partials/nav.1.ejs %>
 
-      <div id="component-wrapper">
-          <div id="main">
-            <div id="label">Select Time</div>
-            
-            <% include ./partials/selecttime.ejs %>
-          </div>
-        </div>
+    <div id="component-wrapper">
+      <div id="main">
+        <div id="label">Select Time</div>
+        
+        <% include ./partials/selecttime.ejs %>
+      </div>
+    </div>
+    <div id="button-container">
+      <a href='/setpoints' class="button back-btn">BACK</a>
+      <a href='/setpoints/edit/temp' class="button next-btn"'>NEXT</a>
+    </div>
   </div>
 </body>
 </html>
