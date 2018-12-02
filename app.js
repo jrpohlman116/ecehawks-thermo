@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const SocketServer = require('ws').Server;
+
+const PORT = process.env.PORT || 3000;
+
 var wss = new SocketServer({ app });
 
 wss.on('connection', (ws) => {
