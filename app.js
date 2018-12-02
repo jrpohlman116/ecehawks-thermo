@@ -30,14 +30,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
-// app.get('/', function(req, res) {
-//   res.render('index.ejs', {
-//    title: 'Thermostat',
-//    currentTemp: tempF,
-//    status: 'ON'
-//   });
-//  });
-app.use('/', indexRouter);
+app.get('/', function(req, res) {
+  res.locals.currentTemp = tempF;
+  res.render('index.ejs');
+ });
+// app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
 app.use('/setpoints/edit/time', setPointTimeRouter);
