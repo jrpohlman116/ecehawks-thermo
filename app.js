@@ -15,9 +15,7 @@ var io = require('socket.io')(http) //require socket.io module and pass the http
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(21, 'out'); //use GPIO pin 21 as output
 
-http.listen(3000); //listen to port 3000
-
-// Error handling
+/* // Error handling
 function handler (req, res) { //create server
   fs.readFile(__dirname + '/views/index.ejs', function(err, data) { //read file index.html in public folder
     if (err) {
@@ -28,19 +26,7 @@ function handler (req, res) { //create server
     res.write(data); //write data from index.html
     return res.end();
   });
-}
-// Sockets control
-io.sockets.on('connection', function (socket) {// WebSocket Connection
-  var lightvalue = 0; //static variable for current status
-
-  socket.on('heat', function(data) { //get light switch status from client
-    lightvalue = data;
-    if (lightvalue != LED.readSync()) { //only change LED if status has changed
-      LED.writeSync(lightvalue); //turn LED on or off
-    }
-  });
-});
-
+} */
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -54,6 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
+
+http.listen(3000); //listen to port 3000
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,6 +58,19 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Sockets control
+io.sockets.on('connection', function (socket) {// WebSocket Connection
+  var lightvalue = 0; //static variable for current status
+
+  socket.on('heat', function(data) { //get light switch status from client
+    lightvalue = data;
+    if (lightvalue != LED.readSync()) { //only change LED if status has changed
+      LED.writeSync(lightvalue); //turn LED on or off
+    }
+  });
+});
+
 // LED Exports
 process.on('SIGINT', function () { //on ctrl+c
   LED.writeSync(0); // Turn LED off
