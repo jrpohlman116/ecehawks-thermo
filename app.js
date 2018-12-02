@@ -9,7 +9,6 @@ var dateTimeRouter = require('./routes/editdatetime');
 var setPointsRouter = require('./routes/setpoints');
 var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
-var sse = require('./sse')
 
 var Gpio = require('onoff').Gpio;
 var LED = new Gpio(21, 'out');
@@ -17,7 +16,6 @@ const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
 var tempF = 0;
-var connections = []
 
 var app = express();
 
@@ -38,12 +36,6 @@ app.get('/', function(req, res) {
   res.locals.sensor = sensor;
   res.render('index.ejs');
  });
-
- app.get('/stream', function(req, res) {
-  res.sseSetup()
-  res.sseSend(tempF)
-  connections.push(res)
-})
 // app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
@@ -76,7 +68,8 @@ function getTempandLed(){
 	}
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
-	i++;
+  i++;
+  return tempF
 }
 
 

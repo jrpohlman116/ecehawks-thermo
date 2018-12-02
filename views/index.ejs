@@ -5,9 +5,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/javascripts/main-page.js"></script>
   <script src="/javascripts/adjust-temp.js"></script>
+  <script src="./app.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <script>
     function startTime() {
+        document.getElementById('curr-temp').innerHTML = getTempandLed() +  + '\u02DA';
         var today = new Date();
         var h = today.getHours();
         var ampm = 'AM'
@@ -33,31 +35,6 @@
         return i;
     }
   </script>
-  <script>
-    if (!!window.EventSource) {
-      var source = new EventSource('/stream')
-
-      source.addEventListener('message', function(e) {
-        temp = JSON.parse(e.data)
-        $("#curr-temp").text(temp)
-      }, false)
-
-      source.addEventListener('open', function(e) {
-        console.log('Connected')
-      }, false)
-
-      source.addEventListener('error', function(e) {
-        if (e.target.readyState == EventSource.CLOSED) {
-          console.log('Disconnected')
-        }
-        else if (e.target.readyState == EventSource.CONNECTING) {
-          console.log('Connecting...')
-        }
-      }, false)
-    } else {
-      console.log("Your browser doesn't support SSE")
-    }
-  </script>
 </head>
 
 <body onload="startTime()">
@@ -71,7 +48,7 @@
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
         <div id="temp-container">
-          <p id="curr-temp"><%= Math.round(sensor.readSimpleF(1)) %>&#730;</p>
+          <p id="curr-temp">30&#730;</p>
           <div id="status-container">
             <p id="hvac-status-id">Status: </p>
             <p id="hvac-status">OFF</p>
