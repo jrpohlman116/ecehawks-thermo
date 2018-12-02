@@ -36,6 +36,7 @@
   margin-top: 5px;
   text-align: left;
   margin-left: 5px;
+  font-size: 28px;
 } 
 
 #time{
@@ -44,6 +45,7 @@
   margin-top: 5px;
   text-align: left;
   margin-left: 5px;
+  font-size: 28px;
 }
 
 #nav-btn{
@@ -73,6 +75,7 @@
 
 html, body{
   height: 100%;
+  margin: 0;
 }
 
 body{
@@ -388,7 +391,7 @@ p{
   padding: 0;
   margin: 10px;
   width: 20%;
-  height: 30px;
+  height: 60px;
   border-radius: 5px;
   box-shadow: 1px 1px #000;
 }
