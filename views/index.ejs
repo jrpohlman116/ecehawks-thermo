@@ -46,7 +46,7 @@
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
         <div id="temp-container">
-          <p id="curr-temp"><%= currentTemp %>&#730;</p>
+          <p id="curr-temp"><%= sensor.readSimpleF(1) %>&#730;</p>
           <div id="status-container">
             <p id="hvac-status-id">Status: </p>
             <p id="hvac-status">OFF</p>

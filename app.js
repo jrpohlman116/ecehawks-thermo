@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
-  res.locals.currentTemp = tempF;
+  res.locals.sensor = sensor;
   res.render('index.ejs');
  });
 // app.use('/', indexRouter);
@@ -64,7 +64,8 @@ function getTempandLed(){
 	else{
 		LED.writeSync(1);
 	}
-	tempF = sensor.readSimpleF(1);
+  tempF = sensor.readSimpleF(1);
+  tempF = Math.round(tempF)
 	i++;
 }
 
