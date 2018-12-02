@@ -13,7 +13,7 @@
   background-color: #202020;
   display: flex;
   width: 100%;
-  height: 53px;
+  height: 106px;
   padding-top: 5px;
   padding-left: 5px;
 } 
@@ -48,8 +48,8 @@
 
 #nav-btn{
   background-color: #808080;
-  width: 35px;
-  height: 35px;
+  width: 70px;
+  height: 70px;
   padding: 5px;
   border-radius: 100%;
   border: none;
@@ -85,13 +85,13 @@ body{
 
 #screen{
   background-color: #000;
-  width: 320px;
-  height: 240px;
+  width: 640px;
+  height: 480px;
   overflow: hidden;
 }
   
 h1{
-  font-size: 18px;
+  font-size: 36px;
   color: #eee;
   display: inline-block;
   padding: 0;
@@ -110,8 +110,8 @@ p{
   
 .button{
   background-color: #808080;
-  width: 35px;
-  height: 35px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   border: none;
   box-shadow: 3px 3px black;
@@ -141,8 +141,8 @@ p{
 
 #button{
   background-color: #808080;
-  width: 35px;
-  height: 35px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   border: none;
   box-shadow: 3px 3px;
@@ -180,8 +180,8 @@ p{
 
 .hvac-button{
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   margin: 5% 0 5% 10px;
 } 
 
@@ -192,7 +192,7 @@ p{
 
 #curr-temp{
   color: #FFF;
-  font-size:125px;
+  font-size:250px;
   line-height: 118%;
   padding: 0;
   margin: 0;
@@ -200,7 +200,7 @@ p{
 
 #scheduler-temp{
   color: #FFF;
-  font-size:125px;
+  font-size:250px;
   line-height: 110%;
   padding: 0;
   margin: 0;
@@ -208,7 +208,7 @@ p{
 
 #status-container{
   width: 100%;
-  height: 35px;
+  height: 70px;
   text-align: center;
   background-color: #4D4D4D;
   border-radius: 10px 10px 0 0;
@@ -221,13 +221,13 @@ p{
   color: #FFF;
   display: inline-block;
   padding-right: 10px;
-  font-size: 14px;
+  font-size: 28px;
 }  
 
 #hvac-status{
   color: #FFCD00;
   display: inline-block;
-  font-size: 14px;
+  font-size: 28px;
 }
 
 #adjust-container{
@@ -244,7 +244,7 @@ p{
   flex-wrap: wrap;
   background-color: #4D4D4D;
   width: 85%;
-  height: 133px;
+  height: 266px;
   margin-left: 20px;
   border-radius: 10px 0 0 10px;
 }
@@ -252,7 +252,7 @@ p{
 #desired-temp-label{
   width: 100%;
   color: #FFF;
-  font-size: 12px;
+  font-size: 24px;
   line-height: 100%;
   padding: 0;
   margin: 0;
@@ -261,7 +261,7 @@ p{
 #desired-temp{
   width: 100%;
   color: #FFF;
-  font-size: 30px;
+  font-size: 60px;
   line-height: 100%;
   padding: 0;
   margin: 0;
@@ -269,10 +269,10 @@ p{
 
 .hold-btn{
   color: #FFF;
-  font-size: 12px;
+  font-size: 24px;
   padding: 0;
   width: 75%;
-  height: 25px;
+  height: 50px;
   border-radius: 5px;
   box-shadow: 1px 1px #000;
 }  
@@ -307,7 +307,7 @@ p{
   background-color: #000;
   display: flex;
   width: 100%;
-  height: 53px;
+  height: 106px;
   padding-top: 5px;
   padding-left: 5px;
 }
@@ -332,10 +332,10 @@ p{
 
 .schedule-btn{
   color: #FFF;
-  font-size: 12px;
+  font-size: 24px;
   padding: 0;
-  width: 113px;
-  height: 33px;
+  width: 226px;
+  height: 66px;
   border-radius: 5px;
   box-shadow: 1px 1px #000;
 }
@@ -347,7 +347,7 @@ p{
   margin-bottom: 10px;
   text-align: left;
   padding-left: 20px;
-  font-size: 16px;
+  font-size: 32px;
   color: white;
 }  
 
@@ -365,11 +365,11 @@ p{
 .back-btn{
   color: #FFF;
   background-color: #808080;
-  font-size: 12px;
+  font-size: 24px;
   padding: 0;
   margin: 10px;
   width: 20%;
-  height: 30px;
+  height: 60px;
   border-radius: 5px;
   box-shadow: 1px 1px #000;
 }  
@@ -384,7 +384,7 @@ p{
 .next-btn{
   color: #FFF;
   background-color: #FFCD00;
-  font-size: 12px;
+  font-size: 24px;
   padding: 0;
   margin: 10px;
   width: 20%;
@@ -422,7 +422,7 @@ p{
 
 .dial-text{
   color: white;
-  font-size: 16px;
+  font-size: 32px;
   margin-top: 2px;
   margin-bottom: 2px;
   text-align: center;
@@ -442,7 +442,7 @@ p{
   margin-bottom: 0px;
   text-align: left;
   padding-left: 20px;
-  font-size: 16px;
+  font-size: 32px;
   color: white;
 }  
 
@@ -454,8 +454,8 @@ p{
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 120px;
+  height: 68px;
 }
 
 .switch input { 
@@ -479,10 +479,10 @@ p{
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 52px;
+  width: 52px;
+  left: 8px;
+  bottom: 8px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -543,7 +543,7 @@ input:checked + .slider:before {
 
 .label{
   color: #FFF;
-  font-size: 18px;
+  font-size: 36px;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
   right: 13%;
