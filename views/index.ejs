@@ -45,6 +45,8 @@
           <button id="heat" class="button hvac-button heat" onclick="heat()"></button>
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
+	
+
         <div id="temp-container">
           <script src="../../bundle.js"></script>
           <script>
@@ -59,6 +61,16 @@
             <p id="hvac-status-id">Status: </p>
             <p id="hvac-status">OFF</p>
           </div>
+          <script src = "../../bundle.js"></script>
+          <script>
+            function tempStuff(){
+              const sensor = require('ds18b20-raspi');
+              const tempf = sensor.readSimpleF(1);
+              document.getElementById("curr-temp").innerHTML = tempf;
+              console.log(tempf);
+            }
+          </script>
+
         </div>
         <div id="adjust-container">
           <div id="adjust-box">
@@ -71,5 +83,12 @@
         </div>
       </div>
   </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>  
+      var socket = io.connect('http://localhost');
+      socket.on('new-temp', function(data) {
+          console.log('New Temp ' + data)
+      });
+  </script>
 </body>
 </html>

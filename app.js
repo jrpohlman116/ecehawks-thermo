@@ -3,6 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var server = require('http').Server(app);  
+var io = require('socket.io')(server);
+
+server.listen(80);
+// WARNING: app.listen(80) will NOT work here!
+
+// When a client connects, we note it in the console
+io.on('connection', function(client) {  
+  console.log('Client connected...');
+
+  var temperature = setInterval(function () {
+    getTemp(function () {
+      tempF = sensor.readSimpleF(1);
+      tempF = Math.round(tempF)
+      socket.volatile.emit('new-temp', tempF);
+    });
+  }, 100);
+
+  socket.on('disconnect', function () {
+    clearInterval(temperature);
+  });
+
+});
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
@@ -10,17 +33,15 @@ var setPointsRouter = require('./routes/setpoints');
 var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
 
-//var Gpio = require('onoff').Gpio;
-//var LED = new Gpio(21, 'out');
-//var TempInterval = setInterval(getTempAndLed, 250);
 
-//var temp = require('ds18b20-raspi');
-
+var Gpio = require('onoff').Gpio;
+var LED = new Gpio(21, 'out');
+const sensor = require('ds18b20-raspi');
+var tempInterval = new setInterval(getTempandLed, 1000);
+var i =0;
+var tempF = 0;
 
 var app = express();
-
-//const port = process.env.PORT || 4000;
-//app.listen(port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +54,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
-app.use('/', indexRouter);
+
+app.get('/', function(req, res) {
+  res.locals.sensor = sensor;
+  res.render('index.ejs');
+});
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
 app.use('/setpoints/edit/time', setPointTimeRouter);
@@ -55,17 +80,19 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
-/*
-function getTempAndLed(){
-	//read temp;
-	var i = 0;
-
-	if(math.mod(i, 2) ==0){
-		LED.writeSync(1);
-	}
-	else{
+function getTempandLed(){
+	if(i % 2 == 0){
 		LED.writeSync(0);
 	}
-}*/
+	else{
+		LED.writeSync(1);
+  }
+  
+  tempF = sensor.readSimpleF(1);
+  tempF = Math.round(tempF)
+  i++;
+}
+
+
+module.exports = app;
+
