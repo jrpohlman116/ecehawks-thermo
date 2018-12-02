@@ -10,6 +10,11 @@ var setPointsRouter = require('./routes/setpoints');
 var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
 
+var Gpio = require('onoff').Gpio;
+var LED = new Gpio(21, 'out');
+var tempInterval = new setInterval(getTempandLed, 1000);
+var i =0;
+
 var app = express();
 
 const port = process.env.PORT || 4000;
@@ -47,5 +52,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function getTempandLed(){
+	if(i%2 == 0){
+		LED.writeSync(0);
+	}
+	else{
+		LED.writeSync(1);
+	}
+	i++;
+	console.log(i);
+}
+
 
 module.exports = app;
