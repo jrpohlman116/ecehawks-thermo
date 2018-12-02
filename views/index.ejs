@@ -3,33 +3,61 @@
 <head>
   <title>Thermostat</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="/javascripts/webserver.js"></script>
+  <script src="/javascripts/main-page.js"></script>
+  <script src="/javascripts/adjust-temp.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  <script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var ampm = 'AM'
+        if (h > 12) {
+            h -= 12;
+            ampm = 'PM'
+        } else if (h === 0) {
+          h = 12;
+        }
+        var m = today.getMinutes();
+        m = checkTime(m);
+
+        document.getElementById('time').innerHTML = h + ":" + m + " " + ampm;
+        var t = setTimeout(startTime, 1000);
+
+        var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+        var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+        var date = days[today.getDay()] + ', ' + months[today.getMonth()] + ' ' + today.getDate()
+        document.getElementById("date").innerHTML = date;
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
+  </script>
 </head>
 
-<body>
+<body onload="startTime()">
   <div id="screen">
       <% include ./partials/nav.ejs %>
 
       <div id="main-homepage">
         <div id="hvac-control">
-          <button class="button hvac-button">Auto</button>
-          <button id="heat" class="button hvac-button" onclick="heatOn()">Heat</button>
-          <button class="button hvac-button">AC</button>
+          <button class="button hvac-button" onclick="auto()">Auto</button>
+          <button id="heat" class="button hvac-button" onclick="heat()">Heat</button>
+          <button class="button hvac-button" onclick="ac()">AC</button>
         </div>
         <div id="temp-container">
           <p id="curr-temp">30&#730;</p>
           <div id="status-container">
             <p id="hvac-status-id">Status: </p>
-            <p id="hvac-status">Heating On</p>
+            <p id="hvac-status">OFF</p>
           </div>
         </div>
         <div id="adjust-container">
           <div id="adjust-box">
-            <div id="arrow-up"></div>
+            <div id="arrow-up" onclick="adjustTemp('up', 'desired-temp')"></div>
             <p id="desired-temp-label">SET TEMP</p>
-            <p id="desired-temp">50&#730;</p>
-            <div id="arrow-down"></div>
+            <p id="desired-temp">60&#730;</p>
+            <div id="arrow-down"  onclick="adjustTemp('down', 'desired-temp')"></div>
             <button class="button hold-btn">HOLD</button>
           </div>
         </div>
