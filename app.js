@@ -42,7 +42,7 @@ app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
 
 http.listen(3000); //listen to port 3000
-/* 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -58,7 +58,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
- */
+
 // Sockets control
 io.sockets.on('connection', function (socket) {// WebSocket Connection
   var lightvalue = 0; //static variable for current status
