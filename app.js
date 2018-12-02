@@ -51,7 +51,7 @@ app.get('/', function(req, res) {
     tempF = sensor.readSimpleF(1);
     tempF = Math.round(tempF)
     console.log(tempF);
-    res.redirect('../index.ejs');
+    app.use('/', indexRouter);
   }, 30000)
   res.locals.tempF = tempF;
   res.render('index.ejs');
