@@ -9,12 +9,12 @@ var dateTimeRouter = require('./routes/editdatetime');
 
 var app = express();
 
-var http = require('http').createServer(handler); //require http server, and create server with function handler()
+//var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var fs = require('fs'); //require filesystem module
-var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
+var io = require('socket.io')(server) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(21, 'out'); //use GPIO pin 21 as output
-
+/* 
 // Error handling
 function handler (req, res) { //create server
   fs.readFile(__dirname + '/views/index.ejs', function(err, data) { //read file index.html in public folder
@@ -27,7 +27,7 @@ function handler (req, res) { //create server
     return res.end();
   });
 }
-
+ */
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
