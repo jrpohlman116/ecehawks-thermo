@@ -3,14 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cayenne = require('cayennejs');
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
 var setPointsRouter = require('./routes/setpoints');
 var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
-
 
 var app = express();
 
@@ -26,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
@@ -47,27 +46,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-// Initiate MQTT API
-const cayenneClient = new Cayenne.MQTT({
-  username: "25e51420-f5d1-11e8-a254-e163efaadfe8",
-  password: "a18088c00f74a59d3671ee73e4b8b1cb6f0f2ee4",
-  clientId: "a093f6c0-f5d9-11e8-b82d-f12a91579eed"
-});
-
-cayenneClient.connect((err, mqttClient) => {
-  // dashboard widget automatically detects datatype & unit
-  cayenneClient.kelvinWrite(3, 65);
-
-  // sending raw values without datatypes
-  cayenneClient.rawWrite(4, 123);
-
-  // subscribe to data channel for actions (actuators)
-  cayenneClient.on("cmd9", function(data) {
-    console.log(data);
-  });
-
 });
 
 module.exports = app;
