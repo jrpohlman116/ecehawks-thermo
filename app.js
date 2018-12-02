@@ -33,7 +33,8 @@ app.use(express.static('public'));
 app.get('/', function(req, res) {
   res.render('index.ejs', {
    title: 'Thermostat',
-   currentTemp: tempF
+   currentTemp: tempF,
+   status: 'ON'
   });
  });
 app.use('/editdatetime', dateTimeRouter);
