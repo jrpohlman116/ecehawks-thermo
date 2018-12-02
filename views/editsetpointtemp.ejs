@@ -5,29 +5,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
     <script src="/javascripts/set-date-time.js"></script>
+    <script src="/javascripts/adjust-temp.js"></script>
 </head>
 
 <body>
   <div id="screen">
-      <% include ./partials/nav.1.ejs %>
+    <% include ./partials/nav.1.ejs %>
 
-      <div id="component-wrapper">
-        <div id="main-settemp">
-            <div id="hvac-control">
-              <button class="button hvac-button auto" onclick="auto()"></button>
-              <button id="heat" class="button hvac-button heat" onclick="heat()"></button>
-              <button class="button hvac-button ac" onclick="ac()"></button>
-            </div>
-            <div id="temp-container">
-              <p id="scheduler-temp">40</p>
-            </div>
-            <div id="adjust-container">
-              <div id="adjust-box-scheduler">
-                <div id="arrow-up" onclick="adjustTemp('up', 'scheduler-temp')"></div>
-                <div id="arrow-down"  onclick="adjustTemp('down', 'scheduler-temp')"></div>
-              </div>
+    <div class="component-wrapper">
+      <div id="main-settemp">
+          <div id="hvac-control">
+            <button class="button hvac-button auto" onclick="auto()"></button>
+            <button id="heat" class="button hvac-button heat" onclick="heat()"></button>
+            <button class="button hvac-button ac" onclick="ac()"></button>
+          </div>
+          <div id="temp-container">
+            <p id="scheduler-temp">40&#730;</p>
+          </div>
+          <div id="adjust-container">
+            <div id="adjust-box-scheduler">
+              <div id="arrow-up" onclick="adjustTemp('up', 'scheduler-temp')"></div>
+              <div id="arrow-down"  onclick="adjustTemp('down', 'scheduler-temp')"></div>
             </div>
           </div>
+        </div>
+    </div>
+    <div id="button-container">
+        <a href='/setpoints/edit/time' class="button back-btn">BACK</a>
+        <a href='/' class="button next-btn">SAVE</a>
       </div>
   </div>
 </body>
