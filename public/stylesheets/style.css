@@ -379,6 +379,7 @@ p{
   display: none;
   justify-content: space-between;
   padding: 0 10px 0 10px;
+  align-items: center;
 }
 
 .next-btn{
@@ -539,6 +540,14 @@ input:checked + .slider:before {
 .auto{
   background-image: url("../images/auto.png");
   background-size: contain;
+}
+
+.label{
+  color: #FFF;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  right: 13%;
 }
 
 
