@@ -7,6 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
 var setPointsRouter = require('./routes/setpoints');
+var setPointTimeRouter = require('./routes/editsetpointtime');
+var setPointTempRouter = require('./routes/editsetpointtemp');
+
 
 var app = express();
 
@@ -26,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
+app.use('/setpoints/edit/time', setPointTimeRouter);
+app.use('/setpoints/edit/temp', setPointTempRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
