@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const SocketServer = require('ws').Server;
-var wss = new SocketServer({ server });
+var wss = new SocketServer({ app });
 
 wss.on('connection', (ws) => {
   console.log("Connected")
