@@ -1,19 +1,21 @@
+<script src="/javascripts/set-date-time.js"></script>
+
 <div id="custom-dial-container">
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">Hour</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustHour('up')"></div>
+        <div id="hour-text" class="dial-text">01</div>
+        <div id="arrow-down" onclick="adjustHour('down')"></div>
     </div>
 
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">Minute</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustMinute('up')"></div>
+        <div id="minute-text" class="dial-text">01</div>
+        <div id="arrow-down" onclick="adjustMinute('down')"></div>
     </div>
 
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">AM</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustAMPM('up')"></div>
+        <div id="ampm-text" class="dial-text">AM</div>
+        <div id="arrow-down" onclick="adjustAMPM('down')"></div>
     </div>
 </div>

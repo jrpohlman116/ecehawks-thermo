@@ -1,19 +1,27 @@
 <div id="custom-dial-container">
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">Month</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustMonth('up')"></div>
+        <div id="month-text" class="dial-text">01</div>
+        <div id="arrow-down" onclick="adjustMonth('down')"></div>
     </div>
 
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">Day</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustDay('up')"></div>
+        <div id="day-text" class="dial-text">
+            <script type=”text/javascript”>
+                document.write((new Date()).getDate().toString());
+            </script>
+        </div>
+        <div id="arrow-down" onclick="adjustMonth('down')"></div>
     </div>
 
     <div>
-        <div id="arrow-up"></div>
-        <div id="dial-text">Year</div>
-        <div id="arrow-down"></div>
+        <div id="arrow-up" onclick="adjustYear('up')"></div>
+        <div id="year-text" class="dial-text">
+            <script type=”text/javascript”>
+                document.write((new Date()).getFullYear().toString());
+            </script>
+        </div>
+        <div id="arrow-down" onclick="adjustYear('down')"></div>
     </div>
 </div>
