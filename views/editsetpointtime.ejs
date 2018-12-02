@@ -9,7 +9,22 @@
 
 <body>
   <div id="screen">
-    <% include ./partials/nav.1.ejs %>
+    <div class="app-bar">
+      <div id="toolbar">
+        <div id="date-time">
+        </div>
+        <div id="nav">
+          <div class="nav-container">
+            <a href="/">
+              <button id="nav-btn" class="home"></button>
+            </a>
+            <a href="/setpoints">
+              <button id="nav-btn" class="calendar"></button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="component-wrapper">
       <div id="main">
