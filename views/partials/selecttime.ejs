@@ -18,4 +18,30 @@
         <div id="ampm-text" class="dial-text">AM</div>
         <div id="arrow-down" onclick="adjustAMPM('down')"></div>
     </div>
+    <script>
+        console.log('running')
+        var today = new Date();
+        var h = today.getHours();
+        var ampm = 'AM'
+        if (h > 12) {
+            h -= 12;
+            ampm = 'PM'
+        } else if (h === 0) {
+          h = 12;
+        }
+        var m = today.getMinutes();
+        if (h < 10){
+            document.getElementById("hour-text").innerHTML = '0' + h;
+        }else{
+            document.getElementById("hour-text").innerHTML = h;
+        }
+
+        if (m < 10){
+            document.getElementById("minute-text").innerHTML = '0' + m; 
+        }else{
+            document.getElementById("minute-text").innerHTML = m;  
+        }
+
+        document.getElementById("ampm-text").innerHTML = ampm;
+    </script>
 </div>
