@@ -27,6 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  z-index: 1101;
 }
 
 #date{
@@ -359,8 +360,6 @@ p{
 #button-container{
   display: flex;
   justify-content: flex-end;
-  position: relative;
-  bottom: -20px;
 }  
 
 .back-btn{
@@ -426,14 +425,14 @@ p{
   font-size: 16px;
   margin-top: 2px;
   margin-bottom: 2px;
+  text-align: center;
 }
 
-#component-wrapper{
-  height: 100%;
+.component-wrapper{
+  height: 55%;
 }
 
-#datetime-component-wrapper{
-  height: 100%;
+.datetime-wrapper{
   position: relative;
   top: -12%;
 }
