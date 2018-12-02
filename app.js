@@ -5,7 +5,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const SocketServer = require('ws').Server;
 
+var indexRouter = require('./routes/index');
+var dateTimeRouter = require('./routes/editdatetime');
+var setPointsRouter = require('./routes/setpoints');
+var setPointTimeRouter = require('./routes/editsetpointtime');
+var setPointTempRouter = require('./routes/editsetpointtemp');
+
+
+var Gpio = require('onoff').Gpio;
+var LED = new Gpio(21, 'out');
+const sensor = require('ds18b20-raspi');
+var tempInterval = new setInterval(getTempandLed, 1000);
+var i =0;
+var tempF = 0;
+
+var app = express();
+
+
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Listening on ${ PORT }'))
 
 var wss = new SocketServer({ app });
 
@@ -23,21 +41,6 @@ setInterval(() => {
   })
 }, 2000)
 
-var indexRouter = require('./routes/index');
-var dateTimeRouter = require('./routes/editdatetime');
-var setPointsRouter = require('./routes/setpoints');
-var setPointTimeRouter = require('./routes/editsetpointtime');
-var setPointTempRouter = require('./routes/editsetpointtemp');
-
-
-var Gpio = require('onoff').Gpio;
-var LED = new Gpio(21, 'out');
-const sensor = require('ds18b20-raspi');
-var tempInterval = new setInterval(getTempandLed, 1000);
-var i =0;
-var tempF = 0;
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
