@@ -131,13 +131,11 @@ p{
 .button:focus{
   outline: none;
   border: none;
-  background: #FFF;
 }
 
 .button:active{
   outline: none;
   border: none;
-  background: #FFF;
 } 
 
 #button{
@@ -159,13 +157,11 @@ p{
 #button:focus{
   outline: none;
   border: none;
-  background: #FFCD00;
 }
 
 #button:active{
   outline: none;
   border: none;
-  background: #FFCD00;
 } 
  
   
@@ -493,11 +489,11 @@ p{
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #FFCD00;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #FFCD00;
 }
 
 input:checked + .slider:before {
