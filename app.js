@@ -52,7 +52,6 @@ app.get('/', function(req, res) {
     tempF = Math.round(tempF)
   }, 2000)
   res.locals.tempF = tempF;
-  res.redirect('http://google.com');
   res.render('index.ejs');
 
 });
