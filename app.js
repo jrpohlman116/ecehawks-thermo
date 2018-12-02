@@ -50,6 +50,7 @@ app.get('/', function(req, res) {
   setInterval(() => {
     tempF = sensor.readSimpleF(1);
     tempF = Math.round(tempF)
+    console.log(tempF);
   }, 2000)
   res.locals.tempF = tempF;
   res.render('index.ejs');
@@ -87,7 +88,6 @@ function getTempandLed(){
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
   i++;
-  console.log(tempF);
 }
 
 
