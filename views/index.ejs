@@ -3,9 +3,6 @@
 <head>
   <title>Thermostat</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="/javascripts/main-page.js"></script>
-  <script src="/javascripts/adjust-temp.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   <script>
     function startTime() {
         var today = new Date();
@@ -32,17 +29,291 @@
         if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
         return i;
     }
+
+    function ac() {
+      var button = document.getElementById('ac');
+      var status = document.getElementById('hvac-status');
+      if (status.innerText === 'AC On'){
+          status.innerText = 'OFF'
+          button.style.backgroundColor = '#808080'
+      }else{
+          status.innerText = 'AC On';
+          button.style.backgroundColor = '#FFCD00'
+          document.getElementById('auto').style.backgroundColor = '#808080'
+          document.getElementById('heat').style.backgroundColor = '#808080'
+      }
+    }
+
+    function auto() {
+      var button = document.getElementById('auto');
+      var status = document.getElementById('hvac-status');
+      if (status.innerText === 'Auto On'){
+          status.innerText = 'OFF'
+          button.style.backgroundColor = '#808080'
+      }else{
+          status.innerText = 'Auto On';
+          button.style.backgroundColor = '#FFCD00'
+          document.getElementById('heat').style.backgroundColor = '#808080'
+          document.getElementById('ac').style.backgroundColor = '#808080'
+      }
+    }
+
+    function hold() {
+      var button = document.getElementById('hold');
+      if (button.style.backgroundColor == 'rgb(128, 128, 128)'){
+          button.style.backgroundColor = '#FFCD00'
+      }else{
+          button.style.backgroundColor = '#808080'
+      }
+    }
   </script>
+
+  <style>
+    .app-bar{
+      width: 100%;
+      display: flex;
+      z-index: 1100;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      flex-direction: column;
+      position: static;
+    }
+
+    #toolbar-homepage{
+      background-color: #202020;
+      display: flex;
+      width: 100%;
+      height: 53px;
+      padding-top: 5px;
+      padding-left: 5px;
+    } 
+
+    #date-time{
+      flex: 50%;
+    }  
+
+    #nav{
+      flex: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      z-index: 1101;
+    }
+
+    #date{
+      color: #FFCD00;
+      display: block;
+      margin-top: 5px;
+      text-align: left;
+      margin-left: 5px;
+    } 
+
+    #time{
+      color: #FFF;
+      display: block;
+      margin-top: 5px;
+      text-align: left;
+      margin-left: 5px;
+    }
+
+    #nav-btn{
+      background-color: #808080;
+      width: 35px;
+      height: 35px;
+      padding: 5px;
+      border-radius: 100%;
+      border: none;
+      box-shadow: 3px 3px black;
+      color: white;
+    }
+
+    #nav-btn:hover{
+      outline: none;
+      border: none;
+      background-color: #FFCD00;
+    }
+
+    .nav-container{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    /* https://codepen.io/jpohlman/pen/RqeJGW */
+
+    html, body{
+      height: 100%;
+    }
+
+    body{
+      background-color: #FFF;
+      font-family: Helvetica Neue;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #screen{
+      background-color: #000;
+      width: 320px;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .button{
+      background-color: #808080;
+      width: 35px;
+      height: 35px;
+      border-radius: 100%;
+      border: none;
+      box-shadow: 3px 3px black;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .button:hover{
+      outline: none;
+      border: none;
+      background-color: #FFCD00;
+    }
+
+    .button:focus{
+      outline: none;
+      border: none;
+    }
+
+    .button:active{
+      outline: none;
+      border: none;
+    } 
+
+    #main-homepage{
+      display: flex;
+      height: 70%;
+    } 
+
+    #hvac-control{
+      flex: 5%;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 0 10px 5px;
+    }  
+
+    .hvac-button{
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin: 5% 0 5% 10px;
+    } 
+
+    #temp-container{
+      flex: 30%;
+      height: 100%;
+    }  
+
+    #curr-temp{
+      color: #FFF;
+      font-size:125px;
+      line-height: 118%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #adjust-container{
+      flex: 15%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    #adjust-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      background-color: #4D4D4D;
+      width: 85%;
+      height: 133px;
+      margin-left: 20px;
+      border-radius: 10px 0 0 10px;
+    }
+
+    #desired-temp-label{
+      width: 100%;
+      color: #FFF;
+      font-size: 12px;
+      line-height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #desired-temp{
+      width: 100%;
+      color: #FFF;
+      font-size: 30px;
+      line-height: 100%;
+      padding: 0;
+      margin: 0;
+    }  
+
+    .hold-btn{
+      color: #FFF;
+      font-size: 12px;
+      padding: 0;
+      width: 75%;
+      height: 25px;
+      border-radius: 5px;
+      box-shadow: 1px 1px #000;
+    }  
+
+    #arrow-up{
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid #FFCD00;
+    }  
+
+    #arrow-down{
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid #FFCD00;
+    }
+
+  </style>
 </head>
 
 <body onload="startTime()">
   <div id="screen">
-      <% include ./partials/nav.ejs %>
+      <div class="app-bar">
+        <div id="toolbar-homepage">
+          <div id="date-time">
+            <div id="time"></div>
+            <div id="date"></div>
+          </div>
+          <div id="nav">
+            <div class="nav-container">
+              <a href="/setpoints">
+                <button id="nav-btn" class="calendar"></button>
+              </a>
+              <a href="/editdatetime">
+                <button id="nav-btn" class="settings"></button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div id="main-homepage">
         <div id="hvac-control">
           <button id="auto" class="button hvac-button auto" onclick="auto()"></button>
-          <button id="heat" class="button hvac-button heat" onclick="heat()"></button>
+          <button id="heat" class="button hvac-button heat"></button>
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
         <div id="temp-container">
@@ -63,5 +334,34 @@
         </div>
       </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> <!-- include socket.io client side script -->
+  <script>
+    window.addEventListener("load", function(){ //when page loads
+      var lightbox = document.getElementById("heat"); 
+      var status = document.getElementById('hvac-status');
+      lightbox.addEventListener("click", function() { //add event listener for when checkbox changes
+        if (status.innerText === 'Heat On'){
+            status.innerText = 'OFF'
+            lightbox.style.backgroundColor = '#808080'
+            socket.emit("heat", 0); //send button status to server (as 1 or 0)
+        }else{
+            status.innerText = 'Heat On';
+            lightbox.style.backgroundColor = '#FFCD00'
+            document.getElementById('auto').style.backgroundColor = '#808080'
+            document.getElementById('ac').style.backgroundColor = '#808080'
+            socket.emit("heat", 1); //send button status to server (as 1 or 0)
+        }
+        
+      });
+    });
+    socket.on('heat', function (data) { //get button status from client
+      if (status.innerText === 'Heat On'){
+        socket.emit("heat", 1); //send push button status to back to server
+      } else{
+        socket.emit("heat", 0); //send push button status to back to server
+      }
+    });
+  </script>
 </body>
 </html>
