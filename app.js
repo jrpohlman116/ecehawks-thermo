@@ -62,7 +62,7 @@ function getTempandLed(){
 		LED.writeSync(1);
 	}
 	var tempF = sensor.readSimpleF(1);
-	console.log(`${tempF} degF`);
+	//console.log(`${tempF} degF`);
 	i++;
 }
 
