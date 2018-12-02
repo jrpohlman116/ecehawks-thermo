@@ -85,7 +85,8 @@ function getTempandLed(){
 	}
 	else{
 		LED.writeSync(1);
-	}
+  }
+  
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
   i++;
