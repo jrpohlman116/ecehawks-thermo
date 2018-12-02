@@ -31,14 +31,7 @@ wss.on('connection', (ws) => {
   ws.on('close', () => console.log('Disconnected'))
 });
 
-setInterval(() => {
-  tempF = sensor.readSimpleF(1);
-  tempF = Math.round(tempF)
 
-  wss.clients.forEach((client) => {
-    client.send(tempF)
-  })
-}, 2000)
 
 
 // view engine setup
@@ -54,8 +47,14 @@ app.use(express.static('public'));
 
 
 app.get('/', function(req, res) {
+  setInterval(() => {
+    tempF = sensor.readSimpleF(1);
+    tempF = Math.round(tempF)
+  }, 2000)
   res.locals.tempF = tempF;
+  res.redirect('http://google.com');
   res.render('index.ejs');
+
 });
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
@@ -90,7 +89,6 @@ function getTempandLed(){
   tempF = Math.round(tempF)
   i++;
   console.log(tempF);
-  res.redirect('http://google.com');
 }
 
 
