@@ -74,7 +74,7 @@
     var el = document.getElementById("curr-temp")
 
     ws.onmessage = function (event) {
-      el.innerHTML = event.data
+      console.log('New Temp ' + event.data)
     }
   </script>
 </body>
