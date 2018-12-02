@@ -10,10 +10,17 @@ var setPointsRouter = require('./routes/setpoints');
 var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
 
+//var Gpio = require('onoff').Gpio;
+//var LED = new Gpio(21, 'out');
+//var TempInterval = setInterval(getTempAndLed, 250);
+
+//var temp = require('ds18b20-raspi');
+
+
 var app = express();
 
-const port = process.env.PORT || 4000;
-app.listen(port);
+//const port = process.env.PORT || 4000;
+//app.listen(port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,3 +56,16 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+/*
+function getTempAndLed(){
+	//read temp;
+	var i = 0;
+
+	if(math.mod(i, 2) ==0){
+		LED.writeSync(1);
+	}
+	else{
+		LED.writeSync(0);
+	}
+}*/
