@@ -67,20 +67,20 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
   socket.on('heat', function(data) { //get light switch status from client
     lightvalue = data;
     if (lightvalue != HeatLED.readSync()) { //only change LED if status has changed
-      LED.writeSync(lightvalue); //turn LED on or off
+      HeatLED.writeSync(lightvalue); //turn LED on or off
     }
   });
   socket.on('ac', function(data) { //get light switch status from client
     lightvalue = data;
     if (lightvalue != CoolingLED.readSync()) { //only change LED if status has changed
-      LED.writeSync(lightvalue); //turn LED on or off
+      HeatLED.writeSync(lightvalue); //turn LED on or off
     }
   });
 });
 
 process.on('SIGINT', function () { //on ctrl+c
-  LED.writeSync(0); // Turn LED off
-  LED.unexport(); // Unexport LED GPIO to free resources
+  HeatLED.writeSync(0); // Turn LED off
+  HeatLED.unexport(); // Unexport LED GPIO to free resources
   //pushButton.unexport(); // Unexport Button GPIO to free resources
   process.exit(); //exit completely
 });
