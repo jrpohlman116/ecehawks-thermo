@@ -119,23 +119,29 @@ function adjustDay(direction){
     let day = parseInt(dialText.textContent);
     let month = document.getElementById('month-text').textContent;
 
+
     
     if(direction === 'up'){
         if((shortMonths.includes(month) && day === 30) || (longMonths.includes(month) && day === 31 || (day ===28 && month === 2))){
-            this.setState({day: 1})
+            dialText.innerText = '0' + (1).toString();
         }else{
-            this.setState({day: this.state.day + 1})
+            day++;
+            if (day < 10){
+                dialText.innerText = '0' + (day).toString();
+            }else{
+                dialText.innerText = (day).toString();
+            }
         }
     }
     else if(direction === 'down'){
         if(day === 1 && shortMonths.includes(month)){
-            this.setState({day: 30})
+            dialText.innerText = (30).toString();
         }
         else if(day === 1 && longMonths.includes(month)){
-            this.setState({day: 31})
+            dialText.innerText = (31).toString();
         }
         else if(day === 1 && month === 2){
-            this.setState({day: 28})
+            dialText.innerText = (28).toString();
         }else{
             day--;
             if (day < 10){
@@ -147,6 +153,18 @@ function adjustDay(direction){
     }
 }
 
-function adjustYear(){
-    
+function adjustYear(direction){
+    let dialText = document.getElementById('year-text');
+    let year = parseInt(dialText.textContent);
+
+    if(direction === 'up'){
+        if(year !== new Date().getFullYear() + 2){
+            dialText.innerText = (year + 1).toString();
+        }
+    }
+    else if(direction === 'down'){
+        if(year !== 1988){
+            dialText.innerText = (year - 1).toString();
+        }
+    }
 }
