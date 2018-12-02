@@ -55,6 +55,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var tempC = 0;
+
 function getTempandLed(){
 	if(i % 2 == 0){
 		LED.writeSync(0);
@@ -62,7 +64,7 @@ function getTempandLed(){
 	else{
 		LED.writeSync(1);
 	}
-	var tempC = sensor.readSimpleC(1);
+	tempC = sensor.readSimpleC(1);
 	console.log(`${tempC} degC`);
 	i++;
 }
