@@ -22,14 +22,14 @@ var tempF = 0;
 var app = express();
 
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
-var wss = new SocketServer({ port: 3001 });
+// var wss = new SocketServer({ port: 3001 });
 
-wss.on('connection', (ws) => {
-  console.log("Connected")
-  ws.on('close', () => console.log('Disconnected'))
-});
+// wss.on('connection', (ws) => {
+//   console.log("Connected")
+//   ws.on('close', () => console.log('Disconnected'))
+// });
 
 
 
@@ -51,7 +51,6 @@ app.get('/', function(req, res) {
     tempF = sensor.readSimpleF(1);
     tempF = Math.round(tempF)
     console.log(tempF);
-    app.use('/', indexRouter);
   }, 30000)
   res.locals.tempF = tempF;
   res.render('index.ejs');
