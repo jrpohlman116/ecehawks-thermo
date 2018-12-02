@@ -7,21 +7,33 @@
 
     <div>
         <div id="arrow-up" onclick="adjustDay('up')"></div>
-        <div id="day-text" class="dial-text">
-            <script type=”text/javascript”>
-                document.write((new Date()).getDate().toString());
-            </script>
-        </div>
-        <div id="arrow-down" onclick="adjustMonth('down')"></div>
+        <div id="day-text" class="dial-text">01</div>
+        <div id="arrow-down" onclick="adjustDay('down')"></div>
     </div>
 
     <div>
         <div id="arrow-up" onclick="adjustYear('up')"></div>
         <div id="year-text" class="dial-text">
-            <script type=”text/javascript”>
-                document.write((new Date()).getFullYear().toString());
-            </script>
+            
         </div>
-        <div id="arrow-down" onclick="adjustYear('down')"></div>
+        <div id="arrow-down" onclick="adjustYear('down')">2001</div>
     </div>
+
+    <script>
+        var d = new Date();
+        if (d.getDate() < 10){
+            document.getElementById("day-text").innerHTML = '0' + d.getDate();
+        }else{
+            document.getElementById("day-text").innerHTML = d.getDate();
+        }
+
+        var month = d.getMonth() + 1;
+        if (month < 10){
+            document.getElementById("month-text").innerHTML = '0' + month; 
+        }else{
+            document.getElementById("month-text").innerHTML = month;  
+        }
+
+        document.getElementById("year-text").innerHTML = d.getFullYear();
+    </script>
 </div>
