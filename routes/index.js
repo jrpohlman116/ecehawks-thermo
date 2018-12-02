@@ -4,7 +4,7 @@ var app = express();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Thermostat', currentTemp: app.locals.tempC });
+  res.render('index', { title: 'Thermostat', currentTemp: app.locals.tempF });
 });
 
 module.exports = router;
