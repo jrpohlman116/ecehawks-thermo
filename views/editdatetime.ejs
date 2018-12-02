@@ -9,20 +9,22 @@
 
 <body>
   <div id="screen">
-      <% include ./partials/nav.1.ejs %>
+    <% include ./partials/nav.1.ejs %>
 
-      <div id="datetime-component-wrapper">
-        <div id="main-datetime">
-          <div id="datetime-label">Select Time</div>
-          
-          <% include ./partials/selecttime.ejs %>
+    <div id="datetime-component-wrapper">
+      <div id="main-datetime">
+        <div id="datetime-label">Select Time</div>
+        <% include ./partials/selecttime.ejs %>
 
-          <div id="datetime-label">Select Date</div>
-          
-          <% include ./partials/selectdate.ejs %>
-        </div>
+        <div id="datetime-label">Select Date</div>
+        <% include ./partials/selectdate.ejs %>
       </div>
-      
+    </div>
+
+    <div id="button-container">
+      <a href='/' class="button back-btn">BACK</a>
+      <a href='/' class="button next-btn">SAVE</a>
+    </div>
   </div>
 </body>
 </html>
