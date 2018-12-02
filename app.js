@@ -20,7 +20,9 @@ var i =0;
 var tempF = 0;
 
 var app = express();
-
+var server = app.listen(4000, function(){
+  console.log('listening for requests');
+});
 
 // const PORT = process.env.PORT || 3000;
 
