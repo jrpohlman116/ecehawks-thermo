@@ -49,15 +49,7 @@
 	
 
         <div id="temp-container">
-          <script src="../../bundle.js"></script>
-          <script>
-            function StartTime(){
-              const sensor = require('ds18b20');
-              const tempF = sensor.readSimpleF();
-              document.getElementById("curr-temp").innerHTML = tempF;
-            }
-          </script>
-          <p id="curr-temp">30&#730;</p>
+          <p id="curr-temp"><%= tempF %>&#730;</p>
           <div id="status-container">
             <p id="hvac-status-id">Status: </p>
             <p id="hvac-status">OFF</p>

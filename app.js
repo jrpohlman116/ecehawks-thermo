@@ -23,7 +23,6 @@ var app = express();
 
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log('Listening on ${ PORT }'))
 
 var wss = new SocketServer({ port: 3001 });
 
@@ -55,7 +54,7 @@ app.use(express.static('public'));
 
 
 app.get('/', function(req, res) {
-  res.locals.sensor = sensor;
+  res.locals.tempF = tempF;
   res.render('index.ejs');
 });
 app.use('/editdatetime', dateTimeRouter);
