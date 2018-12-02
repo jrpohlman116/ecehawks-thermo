@@ -15,13 +15,9 @@ var LED = new Gpio(21, 'out');
 const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
-
 var tempF = 0;
 
 var app = express();
-
-const port = process.env.PORT || 4000;
-app.listen(port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
