@@ -6,7 +6,7 @@
   <script src="/javascripts/main-page.js"></script>
   <script src="/javascripts/adjust-temp.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-  <script src = "../../bundle.js"></script>
+  
   <script>
     function startTime() {
         var today = new Date();
@@ -32,13 +32,6 @@
     function checkTime(i) {
         if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
         return i;
-    }
-
-    function tempStuff(){
-      const sensor = require('ds18b20-raspi');
-      const tempf = sensor.readSimpleF(1);
-      document.getElementById("curr-temp").innerHTML = tempf;
-      console.log(tempf);
     }
   </script>
 </head>
@@ -83,5 +76,14 @@
         </div>
       </div>
   </div>
+  <script src = "../../bundle.js"></script>
+  <script>
+    function tempStuff(){
+      const sensor = require('ds18b20-raspi');
+      const tempf = sensor.readSimpleF(1);
+      document.getElementById("curr-temp").innerHTML = tempf;
+      console.log(tempf);
+    }
+  </script>
 </body>
 </html>
