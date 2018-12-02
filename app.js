@@ -16,6 +16,8 @@ const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
 
+var tempF = 0;
+
 var app = express();
 
 const port = process.env.PORT || 4000;
@@ -32,7 +34,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
-app.use('/', indexRouter);
+app.get('/', function(req, res) {
+  res.render('index.ejs', {
+   title: 'Thermostat',
+   currentTemp: tempF
+  });
+ });
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
 app.use('/setpoints/edit/time', setPointTimeRouter);
@@ -54,7 +61,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var tempF = 0;
 
 function getTempandLed(){
 	if(i % 2 == 0){

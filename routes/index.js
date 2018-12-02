@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Thermostat', currentTemp: app.locals.tempF });
+  res.render('index', { title: 'Thermostat', currentTemp: tempF });
 });
 
 module.exports = router;
