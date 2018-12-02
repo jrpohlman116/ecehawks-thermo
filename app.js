@@ -3,29 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var server = require('http').Server(app);  
-var io = require('socket.io')(server);
-
-server.listen(80);
-// WARNING: app.listen(80) will NOT work here!
-
-// When a client connects, we note it in the console
-io.on('connection', function(client) {  
-  console.log('Client connected...');
-
-  var temperature = setInterval(function () {
-    getTemp(function () {
-      tempF = sensor.readSimpleF(1);
-      tempF = Math.round(tempF)
-      socket.volatile.emit('new-temp', tempF);
-    });
-  }, 100);
-
-  socket.on('disconnect', function () {
-    clearInterval(temperature);
-  });
-
-});
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
