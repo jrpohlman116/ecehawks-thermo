@@ -89,6 +89,11 @@ function getTempandLed(){
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
   i++;
+
+  app.get('/', function(req, res) {
+    res.locals.tempF = tempF;
+    res.render('index.ejs');
+  });
 }
 
 
