@@ -25,7 +25,7 @@ var app = express();
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('Listening on ${ PORT }'))
 
-var wss = new SocketServer({ port: PORT });
+var wss = new SocketServer({ port: 3001 });
 
 wss.on('connection', (ws) => {
   console.log("Connected")
