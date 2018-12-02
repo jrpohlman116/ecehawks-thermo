@@ -35,7 +35,7 @@
   </script>
 </head>
 
-<body onload="startTime();  getTemp();">
+<body onload="startTime()">
   <div id="screen">
       <% include ./partials/nav.ejs %>
 
@@ -63,5 +63,12 @@
         </div>
       </div>
   </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>  
+      var socket = io.connect('http://localhost');
+      socket.on('new-temp', function(data) {
+          console.log('New Temp ' + data)
+      });
+  </script>
 </body>
 </html>
