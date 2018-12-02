@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thermostat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script src="/javascripts/set-date-time.js"></script>
+</head>
+
+<body>
+  <div id="screen">
+      <% include ./partials/nav.1.ejs %>
+
+      <div id="component-wrapper">
+          <div id="main">
+            <div id="label">Select Time</div>
+            
+            <% include ./partials/selecttime.ejs %>
+          </div>
+        </div>
+  </div>
+</body>
+</html>
