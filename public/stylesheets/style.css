@@ -511,5 +511,28 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.home{
+  background-image: url(home.png);
+}
+
+.settings{
+  background-image: url(settings.png);
+}
+
+.calendar{
+  background-image: url("../images/calendar.png");
+}
+
+.heat{
+  background-image: url(heat.png);
+}
+
+.ac{
+  background-image: url(ac.png);
+}
+
+.auto{
+  background-image: url(auto.png);
+}
 
 
