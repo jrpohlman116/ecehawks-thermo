@@ -4,6 +4,7 @@
     <title>Thermostat</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script src="/javascripts/set-points.js"></script>
 </head>
 
 <body>
@@ -11,30 +12,29 @@
       <% include ./partials/nav.2.ejs %>
 
       <div id="main">
-          <div id="schedule-selecter-container">
-            <button class="button schedule-btn" >Weekdays</button>
-            <button class="button schedule-btn" >Weekends</button>
+          <div id="day-selecter-container">
+            <button class="button schedule-btn" onclick="onDaySelectionClick('Weekdays')">Weekdays</button>
+            <button class="button schedule-btn" onclick="onDaySelectionClick('Weekends')">Weekends</button>
           </div>
-  
-          <% if (showSetPoints) { %>
-            <div id="schedule-selecter-container">
-              <button class="button" onClick={() => this.props.onSetPointClick('1')} style={{backgroundColor: this.props.selectedSetPoint === "1" ? "#FFCD00" : "#808080"}}>1</button>
-              <button class="button" onClick={() => this.props.onSetPointClick('2')} style={{backgroundColor: this.props.selectedSetPoint === "2" ? "#FFCD00" : "#808080"}}>2</button>
-              <button class="button" onClick={() => this.props.onSetPointClick('3')} style={{backgroundColor: this.props.selectedSetPoint === "3" ? "#FFCD00" : "#808080"}}>3</button>
-              <button class="button" onClick={() => this.props.onSetPointClick('4')} style={{backgroundColor: this.props.selectedSetPoint === "4" ? "#FFCD00" : "#808080"}}>4</button>
-            </div>
-          <% } %>
 
-          <% if (showSetPoints) { %>
+          <div id="schedule-selecter-container">
+            <button class="button" onclick="onSetPointClick(1)">1</button>
+            <button class="button" onclick="onSetPointClick(2)">2</button>
+            <button class="button" onclick="onSetPointClick(3)">3</button>
+            <button class="button" onclick="onSetPointClick(4)">4</button>
+          </div>
+
+          <div id="enable-edit-container">
             <label class="switch">
               <input type="checkbox" checked>
               <span class="slider round"></span>
             </label>
-          <% } %>
 
-          {this.state.enableEditIsHidden ? null : <EnableEdit selectedDay={this.state.selectedDay} selectedSetPoint={this.state.selectedSetPoint} classes={classes} enableSetPoint={this.state.enableSetPoint} enableSetPointOnClick={this.enableSetPointOnClick}/>}
+            <a href="/editsetpointtime">
+              <button class="button schedule-btn">EDIT</button>
+            </a>
+          </div>
         </div>
-      
   </div>
 </body>
 </html>
