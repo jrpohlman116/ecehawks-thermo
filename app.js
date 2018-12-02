@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const SocketServer = require('ws').Server;
+// const SocketServer = require('ws').Server;
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
