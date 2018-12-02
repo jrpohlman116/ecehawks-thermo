@@ -54,14 +54,13 @@ app.use(function(err, req, res, next) {
 });
 
 function getTempandLed(){
-	if(i%2 == 0){
+	if(i % 2 == 0){
 		LED.writeSync(0);
 	}
 	else{
 		LED.writeSync(1);
 	}
 	i++;
-	console.log(i);
 }
 
 
