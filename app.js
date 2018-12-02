@@ -12,6 +12,8 @@ var setPointTempRouter = require('./routes/editsetpointtemp');
 
 var Gpio = require('onoff').Gpio;
 var LED = new Gpio(21, 'out');
+const sensor = require('ds18b20-raspi');
+const delay = require('delay');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
 
@@ -60,6 +62,8 @@ function getTempandLed(){
 	else{
 		LED.writeSync(1);
 	}
+	var tempC = sensor.readSimpleC(1);
+	console.log(`${tempC} degC`);
 	i++;
 	console.log(i);
 }
