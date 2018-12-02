@@ -8,16 +8,14 @@ var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
 
 var app = express();
-const port = process.env.PORT || 4000;
-app.listen(port);
 
-//var http = require('http').createServer(handler); //require http server, and create server with function handler()
+var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var fs = require('fs'); //require filesystem module
-var io = require('socket.io')(app) //require socket.io module and pass the http object (server)
+var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(21, 'out'); //use GPIO pin 21 as output
 
-/* // Error handling
+// Error handling
 function handler (req, res) { //create server
   fs.readFile(__dirname + '/views/index.ejs', function(err, data) { //read file index.html in public folder
     if (err) {
@@ -28,7 +26,7 @@ function handler (req, res) { //create server
     res.write(data); //write data from index.html
     return res.end();
   });
-} */
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/editdatetime', dateTimeRouter);
 
-//http.listen(3000); //listen to port 3000
+http.listen(3000); //listen to port 8080
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
