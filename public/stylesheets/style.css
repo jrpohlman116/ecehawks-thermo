@@ -10,7 +10,7 @@
 }
 
 #toolbar-homepage{
-  background: #202020;
+  background-color: #202020;
   display: flex;
   width: 100%;
   height: 53px;
@@ -46,7 +46,7 @@
 }
 
 #nav-btn{
-  background: #808080;
+  background-color: #808080;
   width: 35px;
   height: 35px;
   padding: 5px;
@@ -59,7 +59,7 @@
 #nav-btn:hover{
   outline: none;
   border: none;
-  background: #FFCD00;
+  background-color: #FFCD00;
 }
 
 .nav-container{
@@ -75,7 +75,7 @@ html, body{
 }
 
 body{
-  background: #FFF;
+  background-color: #FFF;
   font-family: Helvetica Neue;
   width: 100vw;
   height: 100vh;
@@ -83,7 +83,7 @@ body{
 }
 
 #screen{
-  background: #000;
+  background-color: #000;
   width: 320px;
   height: 240px;
   overflow: hidden;
@@ -108,7 +108,7 @@ p{
 } 
   
 .button{
-  background: #808080;
+  background-color: #808080;
   width: 35px;
   height: 35px;
   border-radius: 100%;
@@ -125,7 +125,7 @@ p{
 .button:hover{
   outline: none;
   border: none;
-  background: #FFCD00;
+  background-color: #FFCD00;
 }
 
 .button:focus{
@@ -139,7 +139,7 @@ p{
 } 
 
 #button{
-  background: #808080;
+  background-color: #808080;
   width: 35px;
   height: 35px;
   border-radius: 100%;
@@ -151,7 +151,7 @@ p{
 #button:hover{
   outline: none;
   border: none;
-  background: #FFCD00;
+  background-color: #FFCD00;
 }
 
 #button:focus{
@@ -192,7 +192,7 @@ p{
 #curr-temp{
   color: #FFF;
   font-size:125px;
-  line-height: 110%;
+  line-height: 118%;
   padding: 0;
   margin: 0;
 }
@@ -209,7 +209,7 @@ p{
   width: 100%;
   height: 35px;
   text-align: center;
-  background: #4D4D4D;
+  background-color: #4D4D4D;
   border-radius: 10px 10px 0 0;
   display: flex;
   align-items: center;
@@ -241,7 +241,7 @@ p{
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background: #4D4D4D;
+  background-color: #4D4D4D;
   width: 85%;
   height: 133px;
   margin-left: 20px;
@@ -303,7 +303,7 @@ p{
 } 
 
 #toolbar{
-  background: #000;
+  background-color: #000;
   display: flex;
   width: 100%;
   height: 53px;
@@ -365,7 +365,7 @@ p{
 
 .back-btn{
   color: #FFF;
-  background: #808080;
+  background-color: #808080;
   font-size: 12px;
   padding: 0;
   margin: 10px;
@@ -383,7 +383,7 @@ p{
 
 .next-btn{
   color: #FFF;
-  background: #FFCD00;
+  background-color: #FFCD00;
   font-size: 12px;
   padding: 0;
   margin: 10px;
@@ -512,27 +512,33 @@ input:checked + .slider:before {
 }
 
 .home{
-  background-image: url(home.png);
+  background-image: url("../images/home.png");
+  background-size: contain;
 }
 
 .settings{
-  background-image: url(settings.png);
+  background-image: url("../images/settings.png");
+  background-size: contain;
 }
 
 .calendar{
   background-image: url("../images/calendar.png");
+  background-size: contain;
 }
 
 .heat{
-  background-image: url(heat.png);
+  background-image: url("../images/heat.png");
+  background-size: contain;
 }
 
 .ac{
-  background-image: url(ac.png);
+  background-image: url("../images/ac.png");
+  background-size: contain;
 }
 
 .auto{
-  background-image: url(auto.png);
+  background-image: url("../images/auto.png");
+  background-size: contain;
 }
 
 
