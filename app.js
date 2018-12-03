@@ -96,6 +96,7 @@ function getTempandLed(){
   //message out to all sockets connected the temp
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF);
+  var status = '';
 
   io.sockets.emit('temp', tempF);
 
@@ -105,11 +106,13 @@ function getTempandLed(){
   if(heat != 0){
     if(settemp >= tempF){
       LEDred.writeSync(1);
-      LEDblue.writeSync(0);      
+      LEDblue.writeSync(0);  
+      status = 'Heat On';    
     }
     else{
       LEDred.writeSync(0);
-      LEDblue.writeSync(0);      
+      LEDblue.writeSync(0); 
+      status = 'OFF';     
     }
   }
 
@@ -117,11 +120,13 @@ function getTempandLed(){
     console.log("in ac");
     if(tempF > settemp){
       LEDblue.writeSync(1);
-      LEDred.writeSync(0);      
+      LEDred.writeSync(0);
+      status = 'AC On';      
     }
     else{
       LEDblue.writeSync(0);
-      LEDred.writeSync(0);      
+      LEDred.writeSync(0);
+      status = 'OFF';      
     }
   }
 
@@ -129,17 +134,21 @@ function getTempandLed(){
     if(settemp > tempF){
       LEDred.writeSync(1);
       LEDblue.writeSync(0);
+      status = 'Heat On';
     }
     else if(settemp == tempF){
       LEDred.writeSync(0);
       LEDblue.writeSync(0);
+      status = 'OFF';
     }
     else{
       LEDred.writeSync(0);
       LEDblue.writeSync(1);
+      status = 'AC On';
     }
   }
 
+  io.sockets.emit('status', status);
 }
 
 

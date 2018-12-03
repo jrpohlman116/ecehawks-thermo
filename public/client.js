@@ -110,6 +110,12 @@ function adjustTemp(direction, id){
 }
 
 //listen for events
+socket.on('status', function(data){
+	document.getElementById('hvac-status').innerHTML =  data + '\u02DA' ;
+	console.log(data);
+});
+
+//listen for events
 socket.on('temp', function(data){
 	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
 	console.log(data);
