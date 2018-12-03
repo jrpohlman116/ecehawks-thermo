@@ -118,7 +118,6 @@ function auto(){
 }
 
 function updateJSON(){
-	console.log("updating json in client");
 	let year = parseInt(document.getElementById('year-text').innerHTML)
 	let month = parseInt(document.getElementById('month-text').innerHTML)
 	let day = parseInt(document.getElementById('day-text').innerHTML)
@@ -133,6 +132,14 @@ function updateJSON(){
 		socket.emit('time', {
 			offsettime: offset
 		});
-	console.log("it's done in client offse = " + offset);
+	//console.log("it's done in client offse = " + offset);
 }
+function settempJSON(){
+	let setpointTemp = 
+	let setpointMode = 
 
+		socket.emit('time', {
+			setpointTemp: setpointTemp
+			setpointMode: setpointMode
+		});
+}
