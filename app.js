@@ -55,6 +55,11 @@ function updateJSON(time) {
     minute: offset.getMinutes()
   })
   console.log("it's done in appjs");
+
+  app.get('/', function (req, res) {
+    res.locals.tempF = tempF;
+    res.render('index.ejs');
+  });
 }
 
 var app = express();
