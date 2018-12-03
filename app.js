@@ -21,7 +21,7 @@ var i =0;
 var tempF = 0;
 
 var app = express();
-var myFirebasseRef = new Firebase("https://ecehawks-thermo.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://ecehawks-thermo.firebaseio.com/");
 var server = app.listen(3000, function(){
   console.log('listening for requests');
 });
@@ -92,9 +92,9 @@ function getTempandLed(){
   }
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
-  myFirebasseRef.set({
+  myFirebaseRef.set({
 	  temp_F: tempF
-  }
+  });
   i++;
 }
 
