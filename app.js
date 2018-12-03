@@ -54,9 +54,10 @@ function theyear() {
 theyear();
 
 function updateJSON(time) {
+  let timeNum = new Number(time)
   console.log("updating json in appjs");
   firebase.database().ref('/').update({
-    offset: time
+    offset: timeNum
   })
   console.log("it's done in appjs");
 }
@@ -64,7 +65,7 @@ function updateJSON(time) {
 function updateSetPoints(something) {
 
   let weekendday;
-  let time = new Date(something.date); // Time in milliseconds
+  let time = new Number(something.date); // Time in milliseconds
   let temp = new Number(something.temp); // tmep in F
   let mode = new Number(something.mode); // 0,1,2,3 => none,ac,heat,auto
   let is_active = new Number (something.is_set); // 0 or 1 
