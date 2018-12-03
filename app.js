@@ -99,7 +99,7 @@ function getTempandLed(){
 
   io.sockets.emit('temp', tempF);
 
-  console.log('heat = ' + heat + 'ac = ' + ac + 'auto = ' + auto);
+  console.log('heat = ' + heat + ' ac = ' + ac + ' auto = ' + auto);
 
 
   if(heat != 0){

@@ -1,5 +1,4 @@
 //establish socket connection
-console.log('im in here');
 var socket = io.connect('http://localhost:3000');
 
 	var heatbtn = document.getElementById('heat');
@@ -19,6 +18,7 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
+		console.log('heat = ' + heatbtn.value);
 	});	
 
 	acbtn.addEventListener('click', function(){
@@ -27,6 +27,7 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
+		console.log('heat = ' + acbtn.value);
 	});	
 
 	autobtn.addEventListener('click', function(){
@@ -35,6 +36,7 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
+		console.log('heat = ' + autobtn.value);		
 	});	
 
 
