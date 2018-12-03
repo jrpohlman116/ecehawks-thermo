@@ -40,6 +40,26 @@ function theyear(){
 
 theyear();
 
+function updateJSON(){
+  let year = parseInt(document.getElementById('year-text').textContent)
+  let month = parseInt(document.getElementById('month-text').textContent)
+  let day = parseInt(document.getElementById('day-text').textContent)
+  let hour = parseInt(document.getElementById('hour-text').textContent)
+  let minute = parseInt(document.getElementById('minute-text').textContent)
+
+  let today = new Date();
+  let userDate = new Date(year, month, day, hour, minute);
+  let offset = new Date(Math.abs(today-userDate));
+
+  firebase.database().ref('/datetime').update({
+    year: offset.getFullYear(),
+    month: offset.getMonth(),
+    day: offset.getDate(),
+    hour: offset.getHours(),
+    minute: offset.getMinutes()
+  })
+}
+
 var app = express();
 var server = app.listen(3000, function(){
   console.log('listening for requests on 3000');
