@@ -20,6 +20,26 @@ var i =0;
 var tempF = 40;
 var socket = require('socket.io')
 
+// firebase shit
+var firebase = require("firebase");
+var config = {
+  apiKey: "AIzaSyBDyKSNajDBOI9NlelS8D9LI7NkIP0oXxc",
+  authDomain: "ecehawks.firebaseapp.com",
+  databaseURL: "https://ecehawks.firebaseio.com",
+};
+firebase.initializeApp(config);
+
+n = 2000
+
+function theyear(){
+  n= n+1;
+  firebase.database().ref('/').update({
+    year: n
+  });
+}
+
+theyear();
+
 var app = express();
 var server = app.listen(3000, function(){
   console.log('listening for requests on 3000');
