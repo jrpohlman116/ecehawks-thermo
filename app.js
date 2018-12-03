@@ -62,7 +62,13 @@ function updateJSON(time) {
 
   obj.time = timeNum;
   json = JSON.stringify(obj);
-  fs.writeFileSync('ecehawks.json', json)
+  fs.writeFileSync('ecehawks.json', json, (err) => {
+    if (err) {
+        console.error(err);
+        return;
+    };
+    console.log("File has been created");
+  });
 
   console.log('json = ' + timeNum);
   firebase.database().ref('/').update({
