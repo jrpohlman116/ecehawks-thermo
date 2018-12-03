@@ -2,9 +2,9 @@
 console.log('im in here');
 var socket = io.connect('http://localhost:3000');
 
-	var heatbtn = document.getElementById('heat');
-	var acbtn = document.getElementById('ac');
-	var autobtn = document.getElementById('auto');
+	//var heatbtn = document.getElementById('heat');
+	//var acbtn = document.getElementById('ac');
+	//var autobtn = document.getElementById('auto');
 	var settemp = document.getElementById('desired-temp-label');
 	var up = document.getElementById('arrrow-up');
 	var down = document.getElementById('arrow-down');
@@ -12,7 +12,7 @@ var socket = io.connect('http://localhost:3000');
 
 
 //state change
-heatbtn.addEventListener('click', function(){
+document.getElementById('heat').addEventListener('click', function(){
 	socket.emit('status', {
 		heat: heatbtn.value,
 		ac: acbtn.value,
@@ -20,7 +20,7 @@ heatbtn.addEventListener('click', function(){
 	});
 });	
 
-acbtn.addEventListener('click', function(){
+document.getElementById('ac').addEventListener('click', function(){
 	socket.emit('status', {
 		heat: heatbtn.value,
 		ac: acbtn.value,
@@ -28,7 +28,7 @@ acbtn.addEventListener('click', function(){
 	});
 });	
 
-autobtn.addEventListener('click', function(){
+document.getElementById('auto').addEventListener('click', function(){
 	socket.emit('status', {
 		heat: heatbtn.value,
 		ac: acbtn.value,
