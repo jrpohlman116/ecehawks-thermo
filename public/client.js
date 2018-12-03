@@ -3,12 +3,27 @@ var socket = io.connect('http://localhost:3000');
 
 var offset = 0;
 
+var weekday = 0
+var weekend = 0
+var setpointNum = 0		//set point number 1-4
+var isActive = 0		//onoff
+var setpointTemp = 0	//setpoint temp val
+var setpointTime = 0	//setpoint time val
+	
+
+
+
+
+
+
 var timeInterval = new setInterval(updateOffset, 1000);
 
 function updateOffset(){
 	socket.emit('time', {
 		offsettime: offset
 	});
+
+
 }
 
 var settemp = document.getElementById('desired-temp-label');
