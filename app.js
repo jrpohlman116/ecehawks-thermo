@@ -185,13 +185,21 @@ io.on('connection', (socket) => {
 
 
 app.get('/', function (req, res) {
+  var obj = {};
   res.locals.tempF = tempF;
-  var firebaseOffset
-  var ref = firebase.database().ref('/').once('value').then(function(snapshot) {
-    firebaseOffset = snapshot.child('offset').val();
-  });
+  // var firebaseOffset
+  // var ref = firebase.database().ref('/').once('value').then(function(snapshot) {
+  //   firebaseOffset = snapshot.child('offset').val();
+  // });
+
+  fs.readFile('myjsonfile.json', 'utf8', function readFileCallback(err, data){
+    if (err){
+        console.log(err);
+    } else {
+    obj = JSON.parse(data); //now it an object
+  }});
   
-  res.locals.timeOffset = firebaseOffset;
+  res.locals.timeOffset = obj.time;
   res.render('index.ejs');
 });
 app.use('/editdatetime', dateTimeRouter);
