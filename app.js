@@ -52,10 +52,10 @@ app.get('/', function(req, res) {
   setInterval(() => {
     tempF = sensor.readSimpleF(1);
     tempF = Math.round(tempF)
-    console.log(tempF);
+    //console.log(tempF);
   }, 30000)
-  res.locals.tempF = tempF;
-  res.render('index.ejs');
+  //res.locals.tempF = tempF;
+  //res.render('index.ejs');
 
 });
 app.use('/editdatetime', dateTimeRouter);
