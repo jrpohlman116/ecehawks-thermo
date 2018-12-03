@@ -9,8 +9,7 @@ var socket = io.connect('http://localhost:3000');
 	var down = document.getElementById('arrow-down');
 
 
-if(heatbtn && acbtn && autobtn && settemp && up && down){
-//state change
+
 
 	console.log("sending data")
 	socket.emit('status', {
@@ -65,7 +64,7 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 			stemp: prasrInt(settemp.textContent)
 		});
 	});	
-}
+
 
 
 //listen for events
