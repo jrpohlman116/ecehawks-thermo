@@ -58,7 +58,6 @@ function updateJSON(time) {
   firebase.database().ref('/').update({
     offset: timeNum
   })
-  console.log("it's done in appjs");
 }
 
 function updateSetPoints() {

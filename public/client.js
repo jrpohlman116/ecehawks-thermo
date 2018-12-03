@@ -293,6 +293,7 @@ function adjustAMPM(){
 
 
 function setpointJSON(){
+	console.log('in setpoint json')
 	socket.emit('setpoint-day', {
 		isActive: isActive,
 		weekday: weekday,
@@ -302,6 +303,8 @@ function setpointJSON(){
 }
 
 function settimeJSON(){
+	console.log('in setpTIME JSON')
+
 	let hour = parseInt(document.getElementById('hour-text').innerHTML)
 	let minute = parseInt(document.getElementById('minute-text').innerHTML)
 	let ampm = document.getElementById('ampm-text').innerHTML
@@ -323,6 +326,8 @@ function settimeJSON(){
 }
 
 function settempJSON(){
+	console.log('in setTEMP json')
+
 	setpointTemp = document.getElementById('scheduler-temp').innerHTML
 	
 	socket.emit('setpoint-temp', {
