@@ -14,7 +14,7 @@ var setPointTempRouter = require('./routes/editsetpointtemp');
 
 var Gpio = require('onoff').Gpio;
 var LEDred = new Gpio(21, 'out');
-var LEDblue = new gpio(20, 'out');
+var LEDblue = new Gpio(20, 'out');
 
 const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
@@ -100,7 +100,7 @@ function getTempandLed(){
 
 
   if(heat != 0){
-    if(settemp > tempF){
+    if(settemp >= tempF){
       LEDred.writeSync(0);
       LEDblue.writeSync(0);      
     }
@@ -110,7 +110,7 @@ function getTempandLed(){
     }
   }
   else if(ac != 0){
-    if(settemp < tempF){
+    if(settemp <= tempF){
       LEDblue.writeSync(0);
       LEDred.writeSync(0);      
     }
@@ -121,12 +121,16 @@ function getTempandLed(){
   }
   else if(auto != 0){
     if(settemp > tempF){
-      LEDred.writeSync(0);
-      LEDblue.writeSync(1);
-    }
-    else{
       LEDred.writeSync(1);
       LEDblue.writeSync(0);
+    }
+    else if(settemp == tempF){
+      LEDred.writeSync(0);
+      LEDblue.writeSync(0);
+    }
+    else{
+      LEDred.writeSync(0);
+      LEDblue.writeSync(1);
     }
   }
 
