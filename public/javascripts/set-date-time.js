@@ -52,7 +52,7 @@ function adjustMinute(direction){
         
     }
     else if(direction === 'down'){
-        if(minute === 0){
+        if(minute < 1){
             dialText.innerText = (59).toString();
         }else{
             minute--;
