@@ -334,6 +334,8 @@ function settempJSON(){
 		setpointTemp: setpointTemp,
 		setpointMode: setpointMode
 	});	
+
+	console.log('done setTEMP json temp: ' + setpointTemp + ' mode: ' + setpointMode)
 }
 
 
