@@ -192,7 +192,7 @@ app.get('/', function (req, res) {
   //   firebaseOffset = snapshot.child('offset').val();
   // });
 
-  fs.readFile('myjsonfile.json', 'utf8', function readFileCallback(err, data){
+  fs.readFile('ecehawks.json', 'utf8', function readFileCallback(err, data){
     if (err){
         console.log(err);
     } else {
