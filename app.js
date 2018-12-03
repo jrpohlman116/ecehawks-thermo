@@ -44,8 +44,8 @@ function theyear() {
 
 theyear();
 
-function updateJSON(offset) {
-  offset = new Date(offset);
+function updateJSON(time) {
+  offset = new Date(time);
   console.log("updating json in appjs");
   firebase.database().ref('/datetime').update({
     year: offset.getFullYear(),
@@ -67,8 +67,6 @@ var ac = 0;
 var auto = 0;
 var settemp = 60;
 
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -79,7 +77,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
-
 
 var io = socket(server);
 io.on('connection', (socket) => {
