@@ -63,8 +63,8 @@ function updateJSON(time) {
 function updateSetPoints() {
 
 
-  let setpointTime = new Number(setpointTime); // Time in milliseconds
-  let setpointTemp = new Number(setpointTemp); // tmep in F
+  let setTime = new Number(setpointTime); // Time in milliseconds
+  let setpTemp = new Number(setpointTemp); // tmep in F
   let mode = new Number(setpointMode); // 0,1,2,3 => none,ac,heat,auto
   let is_active = new Number (isActive); // 0 or 1 
 
@@ -74,9 +74,9 @@ function updateSetPoints() {
     weekendday = '/weekday/'
   }
   
-  weekendday += setpointNum + '/'
+  weekendday += setpointNum
 
-  console.log('updating setpoints in appjs weekendday = ' + weekendday + ' time = ' + setpointTime + ' temp = ' + setpointTemp + ' mode = ' + mode + ' isactive = ' + isActive);
+  console.log('updating setpoints in appjs weekendday = ' + weekendday + ' time = ' + setTime + ' temp = ' + setpTemp + ' mode = ' + mode + ' isactive = ' + isActive);
   firebase.database().ref(weekendday).update({
     is_active: is_active,
     is_set: true,
