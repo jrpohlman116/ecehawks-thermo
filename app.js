@@ -127,6 +127,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('time', function (data) {
+    console.log('socket ' + dateTimeRouter.offsettime)
     offset = data.offsettime
     updateJSON(offset);
     io.sockets.emit('time', data);
