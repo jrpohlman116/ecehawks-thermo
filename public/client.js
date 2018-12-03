@@ -94,6 +94,9 @@ function updateJSON(url){
   socket.emit('time', offset);
   window.location(url)
 
+	socket.emit('time', {
+		offsettime: offset
+	});
   console.log("it's done in client");
 }
 
