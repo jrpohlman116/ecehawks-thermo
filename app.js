@@ -15,11 +15,13 @@ var setPointTempRouter = require('./routes/editsetpointtemp');
 var Gpio = require('onoff').Gpio;
 var LED = new Gpio(21, 'out');
 const sensor = require('ds18b20-raspi');
+var Firebase = require("firebase");
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
 var tempF = 0;
 
 var app = express();
+var myFirebasseRef = new Firebase("https://ecehawks-thermo.firebaseio.com/");
 var server = app.listen(3000, function(){
   console.log('listening for requests');
 });
@@ -88,9 +90,11 @@ function getTempandLed(){
 	else{
 		LED.writeSync(1);
   }
-  
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
+  myFirebasseRef.set({
+	  temp_F: tempF
+  }
   i++;
 }
 
