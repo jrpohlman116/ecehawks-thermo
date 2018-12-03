@@ -16,9 +16,21 @@ var setpointMode = 0	//auto heat or cool
 var timeInterval = setInterval(updateOffset, 2000);
 
 function updateOffset(){
-	socket.emit('time', {
+	sockets.emit('time', {
 		offsettime: offset
 	});
+	
+	io.sockets.emit('setpoint', function(data){
+		weekday: weekday
+		weekdend: weekend
+		setpointNum: setpointNum
+		isActive: isActive
+		setpointTemp: setpointTemp
+		setpointTime: setpointTime
+		setpointMode: setpointMode
+
+	});
+
 }
 
 var settemp = document.getElementById('desired-temp-label');

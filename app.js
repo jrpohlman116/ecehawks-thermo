@@ -130,6 +130,19 @@ io.on('connection', (socket) => {
     io.sockets.emit('time', data);
   });
 
+  socket.on('setpoint', function(data){
+    weekday = data.weekday
+    weekend = data.weekend
+    setpointNum = data.setpointNum
+    isActive = data.isActive
+    setpointTemp = data.setpointTemp
+    setpointTime = data.setpointTime
+    setpointMode = data.setpointMode
+    updateSetPoints();
+  });
+
+
+
   socket.on('setpointday', function(data){
     isActive = data.isActive
     weekday = data.weekday
