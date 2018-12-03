@@ -98,7 +98,7 @@ io.on('connection', (socket) => {
     settemp = data.stemp
   });
 
-  socket.on('time', function (data) {
+  socket.on('timedata', function (data) {
     console.log('hello from time');
     offset = data.offsettime
     updateJSON(offset);
