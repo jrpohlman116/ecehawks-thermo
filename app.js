@@ -13,7 +13,9 @@ var setPointTempRouter = require('./routes/editsetpointtemp');
 
 
 var Gpio = require('onoff').Gpio;
-var LED = new Gpio(21, 'out');
+var LEDred = new Gpio(21, 'out');
+var LEDblue = new gpio(20, 'out');
+
 const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
@@ -28,6 +30,7 @@ var server = app.listen(3000, function(){
 var heat = 0;
 var ac = 0;
 var auto = 0;
+var settemp = 60;
 
 
 
@@ -52,6 +55,12 @@ io.on('connection', (socket) => {
       ac = data.ac;
       auto = data.auto;
   });
+
+  socket.on('set', function(data){
+      settemp = data.stemp
+  });
+
+
 });
 
 
@@ -84,17 +93,43 @@ app.use(function(err, req, res, next) {
 
 function getTempandLed(){
   //message out to all sockets connected the temp
+  tempF = sensor.readSimpleF(1);
+  tempF = Math.round(tempF);
+
   io.sockets.emit('temp', tempF);
 
-	if(i % 2 == 0){
-		LED.writeSync(0);
-	}
-	else{
-		LED.writeSync(1);
+
+  if(heat != 0){
+    if(settemp > tempF){
+      LEDred.writeSync(0);
+      LEDblue.writeSync(0);      
+    }
+    else{
+      LEDred.writeSync(1);
+      LEDblue.writeSync(0);      
+    }
   }
-  tempF = sensor.readSimpleF(1);
-  tempF = Math.round(tempF)
-  i++;
+  else if(ac != 0){
+    if(settemp < tempF){
+      LEDblue.writeSync(0);
+      LEDred.writeSync(0);      
+    }
+    else{
+      LEDblue.writeSync(1);
+      LEDred.writeSync(0);      
+    }
+  }
+  else if(auto != 0){
+    if(settemp > tempF){
+      LEDred.writeSync(0);
+      LEDblue.writeSync(1);
+    }
+    else{
+      LEDred.writeSync(1);
+      LEDblue.writeSync(0);
+    }
+  }
+
 }
 
 
