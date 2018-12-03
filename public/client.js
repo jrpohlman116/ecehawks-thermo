@@ -136,6 +136,9 @@ function auto(){
 }
 
 function updateJSON(){
+	document.getElementById('save-btn').style.display = 'hide'
+	alert('Saved New Date/Time')
+
 	let year = parseInt(document.getElementById('year-text').innerHTML)
 	let month = parseInt(document.getElementById('month-text').innerHTML)
 	let day = parseInt(document.getElementById('day-text').innerHTML)
@@ -145,6 +148,7 @@ function updateJSON(){
 	let today = new Date();
 	let userDate = new Date(year, month, day, hour, minute);
 	offset = Math.abs(today.getMilliseconds()-userDate.getMilliseconds());
+
 
 	socket.emit('time', {
 		offsettime: offset
