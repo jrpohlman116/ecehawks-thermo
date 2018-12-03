@@ -25,6 +25,10 @@ var server = app.listen(3000, function(){
   console.log('listening for requests on 3000');
 });
 
+var heat = 0;
+var ac = 0;
+var auto = 0;
+
 
 
 // view engine setup
@@ -42,7 +46,12 @@ app.use(express.static('public'));
 var io = socket(server);
 io.on('connection', (socket) => {
   console.log('made socket connection', socket.id);
-  //io.sockets.emit('temp', tempF);  
+  //io.sockets.emit('temp', tempF); 
+  socket.on('status', function(data){
+      heat = data.heat;
+      ac = data.ac;
+      auto = data.auto;
+  });
 });
 
 
