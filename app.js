@@ -130,7 +130,7 @@ io.on('connection', (socket) => {
     io.sockets.emit('time', data);
   });
 
-  socket.on('setpoint-day', function(data){
+  socket.on('setpointday', function(data){
     isActive = data.isActive
     weekday = data.weekday
     weekend = data.weekend
@@ -138,16 +138,16 @@ io.on('connection', (socket) => {
     console.log("in setpoint day")
   });
 
-  socket.on('setpoint-time', function(data){
+  socket.on('setpointtime', function(data){
     setpointTime = data.setpointTime
     console.log("in setpoint time")
   });
 
-  socket.on('setpoint-temp', function(data){
+  socket.on('setpointtemp', function(data){
     setpointTemp = data.setpointTemp
-    setpointMode = setpointMode
+    setpointMode = data.setpointMode
     console.log("in setpoint temp")
-    updateSetPoints;
+    updateSetPoints();
   });
 
 
