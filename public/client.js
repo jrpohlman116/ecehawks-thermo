@@ -3,11 +3,6 @@ var socket = io.connect('http://localhost:3000');
 
 
 var settemp = document.getElementById('desired-temp-label');
-var up = document.getElementById('arrrow-up');
-var down = document.getElementById('arrow-down');
-
-
-
 
 // console.log("sending data")
 // socket.emit('status', {
@@ -94,24 +89,25 @@ function auto(){
 	console.log('auto2 = ' + autobtn.value);		
 }
 
+function adjustTemp(direction, id){
+    let dialText = document.getElementById(id);
+    let temp = parseInt(dialText.textContent);
 
-
-
-
-// //set temp button
-// 	up.addEventListener('click', function(){
-// 		socket.emit('set', {
-// 			stemp: parseInt(settemp.textContent)
-// 		});
-// 	});	
-
-// 	down.addEventListener('click', function(){
-// 		socket.emit('set', {
-// 			stemp: parseInt(settemp.textContent)
-// 		});
-// 	});	
-
-
+    if(direction === 'up'){
+        if(temp !== 80){
+            dialText.innerText = (temp + 1).toString() + '\u02DA';
+        }
+    }
+    else if(direction === 'down'){
+        if(temp !== 50){
+            dialText.innerText = (temp - 1).toString() + '\u02DA';
+        }
+	}
+	
+	socket.emit('set', {
+		stemp: temp
+	});
+}
 
 //listen for events
 socket.on('temp', function(data){
