@@ -96,7 +96,7 @@ function getTempandLed(){
   //message out to all sockets connected the temp
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF);
-  var status = '';
+  var status = 'OFF';
 
   io.sockets.emit('temp', tempF);
 
