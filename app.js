@@ -176,7 +176,12 @@ io.on('connection', (socket) => {
 
 app.get('/', function (req, res) {
   res.locals.tempF = tempF;
-  res.locals.timeOffset = offset;
+  var firebaseOffset
+  var ref = firebase.database().ref('/').once('value').then(function(snapshot) {
+    firebaseOffset = snapshot.child('offset').val();
+  });
+  
+  res.locals.timeOffset = firebaseOffset;
   res.render('index.ejs');
 });
 app.use('/editdatetime', dateTimeRouter);
