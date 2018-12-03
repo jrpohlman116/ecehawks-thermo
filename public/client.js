@@ -148,7 +148,7 @@ function updateJSON(){
 
 
 		socket.emit('time', {
-			offsettime: offset
+			offsettime: userDat
 		});
 	//console.log("it's done in client offse = " + offset);
 }
@@ -302,7 +302,7 @@ function adjustAMPM(){
 
 
 
-
+/*
 
 function setpointJSON(){
 	console.log('in setpoint json')
@@ -350,7 +350,7 @@ function settempJSON(){
 
 	console.log('done setTEMP json temp: ' + setpointTemp + ' mode: ' + setpointMode)
 }
-
+*/
 
 
 
