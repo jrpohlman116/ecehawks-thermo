@@ -92,9 +92,11 @@ function updateJSON(){
 	let hour = parseInt(document.getElementById('hour-text').innerHTML)
 	let minute = parseInt(document.getElementById('minute-text').innerHTML)
 
-	let today = new Date();
-	let userDate = new Date(year, month, day, hour, minute);
-	let offset = Math.abs(today-userDate);
+	//let today = new Date();
+	//let userDate = new Date(year, month, day, hour, minute);
+	//let offset = Math.abs(today-userDate);
+
+    offset = 4;
 
 		socket.emit('time', {
 			offsettime: offset
