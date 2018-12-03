@@ -79,7 +79,7 @@ function auto(){
 	});
 }
 
-function updateJSON(){
+function updateJSON(url){
   console.log("updating json in client");
   let year = parseInt(document.getElementById('year-text').innerHTML)
   let month = parseInt(document.getElementById('month-text').innerHTML)
@@ -90,8 +90,10 @@ function updateJSON(){
   let today = new Date();
   let userDate = new Date(year, month, day, hour, minute);
   let offset = Math.abs(today-userDate);
+  
+  socket.emit('time', offset);
+  window.location(url)
 
-	socket.emit('time', offset);
   console.log("it's done in client");
 }
 
