@@ -13,30 +13,33 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 //state change
 
 	heatbtn.addEventListener('click', function(){
+		console.log('heat1 = ' + heatbtn.value);
 		socket.emit('status', {
 			heat: heatbtn.value,
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
-		console.log('heat = ' + heatbtn.value);
+		console.log('heat2 = ' + heatbtn.value);
 	});	
 
 	acbtn.addEventListener('click', function(){
+		console.log('ac1 = ' + heatbtn.value);
 		socket.emit('status', {
 			heat: heatbtn.value,
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
-		console.log('heat = ' + acbtn.value);
+		console.log('ac2 = ' + acbtn.value);
 	});	
 
 	autobtn.addEventListener('click', function(){
+		console.log('auto1 = ' + heatbtn.value);
 		socket.emit('status', {
 			heat: heatbtn.value,
 			ac: acbtn.value,
 			auto: autobtn.value
 		});
-		console.log('heat = ' + autobtn.value);		
+		console.log('auto2 = ' + autobtn.value);		
 	});	
 
 
