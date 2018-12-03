@@ -46,7 +46,7 @@ n = 2000
 
 function theyear() {
   n = n + 1;
-  firebase.database().ref('/').update({
+  firebase.database().ref('/year').update({
     year: n
   });
 }
