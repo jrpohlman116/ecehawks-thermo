@@ -55,6 +55,7 @@ theyear();
 
 function updateJSON(time) {
   let timeNum = new Number(time)
+  console.log('json = ' + timeNum);
   firebase.database().ref('/').update({
     offset: timeNum
   })
