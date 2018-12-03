@@ -92,7 +92,7 @@ function ac(){
 		document.getElementById('auto').style.backgroundColor = '#808080'
 		document.getElementById('heat').style.backgroundColor = '#808080'
 		acIsColored = true
-		setpointMode = 3
+		setpointMode = 1
 	}
 
 	socket.emit('status', {
@@ -115,7 +115,7 @@ function auto(){
 		document.getElementById('heat').style.backgroundColor = '#808080'
 		document.getElementById('ac').style.backgroundColor = '#808080'
 		
-		setpointMode = 1
+		setpointMode = 3
 	}
 
 	socket.emit('status', {
