@@ -10,12 +10,12 @@
 
   <script>
     function startClock(){
-      var today = new Date()
       var offset = document.getElementById('timeoffset').textContent
+      var today = new Date(offset)
+
       startTime(today);
     }
     function startTime(today) {
-        today = new Date();
         var h = today.getHours();
         var ampm = 'AM'
         if (h > 12) {
@@ -28,7 +28,9 @@
         m = checkTime(m);
 
         document.getElementById('time').innerHTML = h + ":" + m + " " + ampm;
-        var t = setTimeout(startTime, 1000);
+        var t = setTimeout(function() {
+          startTime(today);
+        }, 1000);
 
         var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
         var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
