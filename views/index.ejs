@@ -11,6 +11,7 @@
   <script>
     function startClock(){
       var offset = document.getElementById('timeoffset').textContent
+      console.log(offset)
       var today = new Date(offset)
 
       startTime(today);
@@ -55,7 +56,7 @@
           <button id="ac" class="button hvac-button ac" value="0" onclick="ac()"></button>
         </div>
 	
-        <p id="timeoffset" style="display: none;"><%= timeOffset %></p>
+        <p id="timeoffset"><%= timeOffset %></p>
 
         <div id="temp-container">
           <p id="curr-temp"><%= tempF %>&#730;</p>
