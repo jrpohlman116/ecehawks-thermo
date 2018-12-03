@@ -24,13 +24,11 @@ function heat(){
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
 
-	console.log('heat1 = ' + heatbtn.value);
 	socket.emit('status', {
 		heat: 1,
 		ac: 0,
 		auto: 0
 	});
-	console.log('heat2 = ' + heatbtn.value);
 }	
 
 function ac(){
@@ -50,13 +48,11 @@ function ac(){
 		document.getElementById('heat').style.backgroundColor = '#808080'
 	}
 
-	console.log('ac1 = ' + heatbtn.value);
 	socket.emit('status', {
 		heat: 0,
 		ac: 1,
 		auto: 0
 	});
-	console.log('ac2 = ' + acbtn.value);
 }	
 
 function auto(){
@@ -76,13 +72,11 @@ function auto(){
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
 
-	console.log('auto1 = ' + heatbtn.value);
 	socket.emit('status', {
 		heat: 0,
 		ac: 0,
 		auto: 1
 	});
-	console.log('auto2 = ' + autobtn.value);		
 }
 
 function updateJSON(){
