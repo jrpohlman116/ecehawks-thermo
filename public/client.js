@@ -9,7 +9,7 @@ var setpointNum = 0		//set point number 1-4
 var isActive = 0		//onoff
 var setpointTemp = 0	//setpoint temp val
 var setpointTime = 0	//setpoint time val
-	
+var setpointMode = 0	//auto heat or cool		
 
 
 
