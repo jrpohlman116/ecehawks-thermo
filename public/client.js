@@ -14,8 +14,8 @@ if(heatbtn && acbtn && autobtn && settemp && up && down){
 
 	console.log("sending data")
 	socket.emit('status', {
-		heat: 0
-		ac: 1
+		heat: 0,
+		ac: 1,
 		auto: 0
 	});
 
