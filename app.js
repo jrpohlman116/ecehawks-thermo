@@ -133,6 +133,10 @@ io.on('connection', (socket) => {
 
 
 
+
+
+
+
 app.get('/', function (req, res) {
   res.locals.tempF = tempF;
   res.render('index.ejs');
