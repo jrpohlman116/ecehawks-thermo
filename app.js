@@ -17,7 +17,7 @@ var LEDred = new Gpio(21, 'out');
 var LEDblue = new Gpio(20, 'out');
 
 const sensor = require('ds18b20-raspi');
-var tempInterval = new setInterval(getTempandLed, 1000);
+var tempInterval = setInterval(getTempandLed, 1000);
 var i = 0;
 var tempF = 40;
 var socket = require('socket.io')
@@ -55,7 +55,6 @@ theyear();
 
 function updateJSON(time) {
   let timeNum = new Number(time)
-  console.log("updating json in appjs");
   firebase.database().ref('/').update({
     offset: timeNum
   })
@@ -127,7 +126,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on('time', function (data) {
-    console.log("FUCK GIT")
     offset = data.offsettime
     updateJSON(offset);
     io.sockets.emit('time', data);
@@ -212,7 +210,6 @@ function getTempandLed() {
   }
 
   if (ac != 0) {
-    console.log("in ac");
     if (tempF > settemp) {
       LEDblue.writeSync(1);
       LEDred.writeSync(0);

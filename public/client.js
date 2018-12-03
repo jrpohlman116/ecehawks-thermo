@@ -13,14 +13,12 @@ var setpointMode = 0	//auto heat or cool
 
 
 
-var timeInterval = setInterval(updateOffset, 1000);
+var timeInterval = setInterval(updateOffset, 2000);
 
 function updateOffset(){
 	socket.emit('time', {
 		offsettime: offset
 	});
-
-
 }
 
 var settemp = document.getElementById('desired-temp-label');
