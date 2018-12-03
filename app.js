@@ -41,6 +41,7 @@ function theyear(){
 theyear();
 
 function updateJSON(){
+  console.log("updating json");
   let year = parseInt(document.getElementById('year-text').textContent)
   let month = parseInt(document.getElementById('month-text').textContent)
   let day = parseInt(document.getElementById('day-text').textContent)
@@ -58,6 +59,7 @@ function updateJSON(){
     hour: offset.getHours(),
     minute: offset.getMinutes()
   })
+  console.log("it's done");
 }
 
 var app = express();
