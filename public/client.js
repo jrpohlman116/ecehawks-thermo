@@ -13,7 +13,7 @@ var setpointMode = 0	//auto heat or cool
 
 
 
-var timeInterval = setInterval(updateOffset, 2000);
+var timeInterval = setTimeout(updateOffset, 2000);
 
 function updateOffset(){
 	socket.emit('time', {
