@@ -12,6 +12,13 @@ var socket = io.connect('http://localhost:3000');
 if(heatbtn && acbtn && autobtn && settemp && up && down){
 //state change
 
+	console.log("sending data")
+	socket.emit('status', {
+		heat: 0
+		ac: 1
+		auto: 0
+	});
+
 	heatbtn.addEventListener('click', function(){
 		console.log('heat1 = ' + heatbtn.value);
 		socket.emit('status', {
