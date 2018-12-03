@@ -6,6 +6,11 @@ var settemp = document.getElementById('desired-temp-label');
 var up = document.getElementById('arrrow-up');
 var down = document.getElementById('arrow-down');
 
+//listen for events
+socket.on('temp', function(data){
+	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
+	console.log(data);
+});
 
 function heat(){
 	var heatbtn = document.getElementById('heat');
@@ -96,9 +101,3 @@ function updateJSON(){
 		});
 	console.log("it's done in client");
 }
-
-//listen for events
-socket.on('temp', function(data){
-	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
-	console.log(data);
-});
