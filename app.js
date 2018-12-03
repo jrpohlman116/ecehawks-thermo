@@ -77,6 +77,7 @@ function updateSetPoints() {
   weekendday += setpointNum
 
   console.log('updating setpoints in appjs')
+  console.log('weekendday = ' + weekendday + ' time = ' + offset + ' temp = ' + setpointTemp + ' mode = ' + mode + ' isactive = ' + is_active);
   firebase.database().ref(weekendday).update({
     is_active: is_active,
     is_set: true,
