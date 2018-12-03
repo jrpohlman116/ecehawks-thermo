@@ -54,14 +54,9 @@ function theyear() {
 theyear();
 
 function updateJSON(time) {
-  offset = new Date(time);
   console.log("updating json in appjs");
-  firebase.database().ref('/datetime/').update({
-    year: offset.getFullYear(),
-    month: offset.getMonth(),
-    day: offset.getDate(),
-    hour: offset.getHours(),
-    minute: offset.getMinutes()
+  firebase.database().ref('/').update({
+    offset: time
   })
   console.log("it's done in appjs");
 }
@@ -79,8 +74,6 @@ function updateSetPoints(something) {
   } else {
     weekendday = '/weekday/'
   }
-
-  if()
   
   console.log("updating setpoints in appjs");
   firebase.database().ref(weekendday).update({
