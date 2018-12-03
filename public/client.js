@@ -43,13 +43,13 @@ autobtn.addEventListener('click', function(){
 //set temp button
 up.addEventListener('click', function(){
 	socket.emit('set', {
-		stemp: prarseInt(settemp.textContent);
+		stemp: prarseInt(settemp.textContent)
 	});
 });	
 
 down.addEventListener('click', function(){
 	socket.emit('set', {
-		stemp: prasrInt(settemp.textContent);
+		stemp: prasrInt(settemp.textContent)
 	});
 });	
 
