@@ -95,13 +95,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on('set', function (data) {
+    console.log('hello from time');
     settemp = data.stemp
+    offset = data.offsettime
+    updateJSON(offset);
   });
 
   socket.on('timedata', function (data) {
-    console.log('hello from time');
-    offset = data.offsettime
-    updateJSON(offset);
+
   });
 
 });
