@@ -89,7 +89,6 @@ io.on('connection', (socket) => {
     heat = data.heat;
     ac = data.ac;
     auto = data.auto;
-    console.log("IM IN THE STATUS LISTENER")
   });
 
   socket.on('set', function (data) {
