@@ -1,6 +1,10 @@
 //establish socket connection
 var socket = io.connect('http://localhost:3000');
 
+var offset = 0;
+
+
+
 
 var settemp = document.getElementById('desired-temp-label');
 var up = document.getElementById('arrrow-up');
@@ -82,4 +86,23 @@ function auto(){
 		ac: 0,
 		auto: 1
 	});
+}
+
+function updateJSON(){
+	console.log("updating json in client");
+	let year = parseInt(document.getElementById('year-text').innerHTML)
+	let month = parseInt(document.getElementById('month-text').innerHTML)
+	let day = parseInt(document.getElementById('day-text').innerHTML)
+	let hour = parseInt(document.getElementById('hour-text').innerHTML)
+	let minute = parseInt(document.getElementById('minute-text').innerHTML)
+
+	let today = new Date();
+	let userDate = new Date(year, month, day, hour, minute);
+	let offset = Math.abs(today-userDate);
+
+
+		socket.emit('time', {
+			offsettime: offset
+		});
+	console.log("it's done in client");
 }
