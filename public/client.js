@@ -16,7 +16,6 @@ var setpointMode = 0	//auto heat or cool
 var timeInterval = setInterval(updateOffset, 2000);
 
 function updateOffset(){
-	console.log('update offset' + offset)
 	socket.emit('time', {
 		offsettime: offset
 	});
@@ -147,11 +146,10 @@ function updateJSON(){
 	let userDate = new Date(year, month, day, hour, minute);
 	offset = Math.abs(today.getMilliseconds()-userDate.getMilliseconds());
 
-	console.log(offset);
 	socket.emit('time', {
 		offsettime: offset
 	});
-	console.log("it's done in client offse = " + offset);
+	// console.log("it's done in client offse = " + offset);
 }
 
 
