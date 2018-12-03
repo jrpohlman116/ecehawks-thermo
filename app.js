@@ -83,11 +83,10 @@ var io = socket(server);
 io.on('connection', (socket) => {
   console.log('made socket connection', socket.id);
   //io.sockets.emit('temp', tempF); 
-  socket.on('status', function (data) {
-    console.log('status')
-    heat = data.heat;
-    ac = data.ac;
-    auto = data.auto;
+  socket.on('status', function(data){
+      heat = data.heat;
+      ac = data.ac;
+      auto = data.auto;
   });
 
   socket.on('set', function (data) {
@@ -136,19 +135,22 @@ function getTempandLed() {
   //message out to all sockets connected the temp
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF);
+  var status = 'OFF';
 
   io.sockets.emit('temp', tempF);
 
 
 
-  if (heat != 0) {
-    if (settemp >= tempF) {
-      LEDred.writeSync(0);
-      LEDblue.writeSync(0);
-    }
-    else {
+  if(heat != 0){
+    if(settemp >= tempF){
       LEDred.writeSync(1);
-      LEDblue.writeSync(0);
+      LEDblue.writeSync(0);  
+      status = 'Heat On';    
+    }
+    else{
+      LEDred.writeSync(0);
+      LEDblue.writeSync(0); 
+      status = 'OFF';     
     }
   }
 
@@ -157,10 +159,12 @@ function getTempandLed() {
     if (tempF > settemp) {
       LEDblue.writeSync(1);
       LEDred.writeSync(0);
+      status = 'AC On';      
     }
     else {
       LEDblue.writeSync(0);
       LEDred.writeSync(0);
+      status = 'OFF';      
     }
   }
 
@@ -168,17 +172,21 @@ function getTempandLed() {
     if (settemp > tempF) {
       LEDred.writeSync(1);
       LEDblue.writeSync(0);
+      status = 'Heat On';
     }
     else if (settemp == tempF) {
       LEDred.writeSync(0);
       LEDblue.writeSync(0);
+      status = 'OFF';
     }
     else {
       LEDred.writeSync(0);
       LEDblue.writeSync(1);
+      status = 'AC On';
     }
   }
 
+  io.sockets.emit('hvac-status', status);
 }
 
 
