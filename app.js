@@ -86,8 +86,6 @@ function updateSetPoints() {
   
   weekendday += setpointNum
 
-  console.log('updating setpoints in appjs')
-  console.log('weekendday = ' + weekendday + ' time = ' + setTime + ' temp = ' + setpointTemp + ' mode = ' + mode + ' isactive = ' + is_active);
   firebase.database().ref(weekendday).update({
     is_active: is_active,
     is_set: true,
@@ -197,8 +195,11 @@ app.get('/', function (req, res) {
         console.log(err);
     } else {
     obj = JSON.parse(data); //now it an object
+    console.log(data)
   }});
-  
+
+
+  console.log(obj)
   res.locals.timeOffset = obj.time;
   res.render('index.ejs');
 });
