@@ -112,17 +112,20 @@ function getTempandLed(){
       LEDblue.writeSync(0);      
     }
   }
-  else if(ac != 0){
-    if(settemp <= tempF){
-      LEDblue.writeSync(0);
-      LEDred.writeSync(0);      
-    }
-    else{
+
+  if(ac != 0){
+    console.log("in ac");
+    if(tempF > settemp){
       LEDblue.writeSync(1);
       LEDred.writeSync(0);      
     }
+    else{
+      LEDblue.writeSync(0);
+      LEDred.writeSync(0);      
+    }
   }
-  else if(auto != 0){
+
+  if(auto != 0){
     if(settemp > tempF){
       LEDred.writeSync(1);
       LEDblue.writeSync(0);
