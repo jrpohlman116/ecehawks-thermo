@@ -3,6 +3,11 @@ function onDaySelectionClick(enable, disable) {
     x.style.display = "flex"; 
     document.getElementById(enable).style.backgroundColor = '#FFCD00'
     document.getElementById(disable).style.backgroundColor = '#808080'
+
+    document.getElementById('1').style.backgroundColor = '#FFCD00'
+    document.getElementById('2').style.backgroundColor = '#808080'
+    document.getElementById('3').style.backgroundColor = '#808080'
+    document.getElementById('4').style.backgroundColor = '#808080'
 } 
 
 function onSetPointClick(name) {
