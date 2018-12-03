@@ -64,7 +64,7 @@ var socket = io.connect('http://localhost:3000');
 			auto: autobtn.value
 		});
 		console.log('ac2 = ' + acbtn.value);
-	});	
+	}	
 
 	function auto(){
 		var button = document.getElementById('auto');
@@ -88,7 +88,7 @@ var socket = io.connect('http://localhost:3000');
 			auto: autobtn.value
 		});
 		console.log('auto2 = ' + autobtn.value);		
-	});	
+	}
 
 
 
