@@ -101,7 +101,7 @@ io.on('connection', (socket) => {
   socket.on('time', function (data) {
     console.log("hello from time");
     offset = data.offsettime
-    updateJSON(offset);
+    //updateJSON(offset);
   });
 
 });
