@@ -148,7 +148,7 @@ function updateJSON(){
 
 
 		socket.emit('time', {
-			offsettime: userDate
+			offsettime: offset
 		});
 	//console.log("it's done in client offse = " + offset);
 }

@@ -10,9 +10,11 @@
 
   <script>
     function startClock(){
+      var today = new Date()
       var offset = document.getElementById('timeoffset').textContent
       console.log(offset)
-      var today = new Date(offset)
+      
+      var displayDate = new Date(today + offset);
 
       startTime(today);
     }
