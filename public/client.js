@@ -104,5 +104,5 @@ function updateJSON(){
 		socket.emit('time', {
 			offsettime: offset
 		});
-	console.log("it's done in client");
+	console.log("it's done in client offse = " + offset);
 }
