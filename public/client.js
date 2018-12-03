@@ -7,15 +7,6 @@ var up = document.getElementById('arrrow-up');
 var down = document.getElementById('arrow-down');
 
 
-
-
-// console.log("sending data")
-// socket.emit('status', {
-// 	heat: 0,
-// 	ac: 1,
-// 	auto: 0
-// });
-
 function heat(){
 	var heatbtn = document.getElementById('heat');
 	var acbtn = document.getElementById('ac');
