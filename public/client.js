@@ -79,7 +79,7 @@ function auto(){
 	});
 }
 
-function updateJSON(url){
+function updateJSON(){
 	console.log("updating json in client");
 	let year = parseInt(document.getElementById('year-text').innerHTML)
 	let month = parseInt(document.getElementById('month-text').innerHTML)
