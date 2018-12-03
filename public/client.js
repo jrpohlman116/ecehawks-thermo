@@ -91,7 +91,9 @@ function updateJSON(){
   let userDate = new Date(year, month, day, hour, minute);
   let offset = Math.abs(today-userDate);
 
-	socket.emit('time', offset);
+	socket.emit('time', {
+		offsettime: offset
+	});
   console.log("it's done in client");
 }
 
