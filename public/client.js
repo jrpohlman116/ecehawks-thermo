@@ -40,7 +40,7 @@ var down = document.getElementById('arrow-down');
 //listen for events
 socket.on('temp', function(data){
 	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
-	console.log(data);
+	//console.log(data);
 });
 
 
@@ -322,7 +322,7 @@ function settimeJSON(){
 	let ampm = document.getElementById('ampm-text').innerHTML
 
 	if (ampm === 'PM') {
-		hour -= 12;
+		hour += 12;
 	} else if (ampm = 'AM' && hour === 12) {
 		hour = 0;
 	}
@@ -330,7 +330,7 @@ function settimeJSON(){
 	let userDate = new Date();
 	userDate.setHours(hour);
 	userDate.setMinutes(minute);
-	let setpointTime = userDate.getMilliseconds();
+	setpointTime = userDate.getMilliseconds();
 
 	socket.emit('setpointtime', {
 		setpointTime: setpointTime
