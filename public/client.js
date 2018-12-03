@@ -17,16 +17,18 @@ var down = document.getElementById('arrow-down');
 // });
 
 function heat(){
-	var button = document.getElementById('heat');
+	var heatbtn = document.getElementById('heat');
+	var acbtn = document.getElementById('ac');
+	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
 	if (status.innerText === 'Heat On'){
 		status.innerText = 'OFF'
-		button.style.backgroundColor = '#808080'
-		button.value = '0'
+		heatbtn.style.backgroundColor = '#808080'
+		heatbtn.value = '0'
 	}else{
 		status.innerText = 'Heat On';
-		button.style.backgroundColor = '#FFCD00'
-		button.value = '1'
+		heatbtn.style.backgroundColor = '#FFCD00'
+		heatbtn.value = '1'
 		document.getElementById('auto').style.backgroundColor = '#808080'
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
@@ -41,16 +43,18 @@ function heat(){
 }	
 
 function ac(){
-	var button = document.getElementById('ac');
+	var heatbtn = document.getElementById('heat');
+	var acbtn = document.getElementById('ac');
+	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
 	if (status.innerText === 'AC On'){
 		status.innerText = 'OFF'
-		button.style.backgroundColor = '#808080'
-		button.value = '0'
+		acbtn.style.backgroundColor = '#808080'
+		acbtn.value = '0'
 	}else{
 		status.innerText = 'AC On';
-		button.value = '1'
-		button.style.backgroundColor = '#FFCD00'
+		acbtn.value = '1'
+		acbtn.style.backgroundColor = '#FFCD00'
 		document.getElementById('auto').style.backgroundColor = '#808080'
 		document.getElementById('heat').style.backgroundColor = '#808080'
 	}
@@ -65,16 +69,18 @@ function ac(){
 }	
 
 function auto(){
-	var button = document.getElementById('auto');
+	var heatbtn = document.getElementById('heat');
+	var acbtn = document.getElementById('ac');
+	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
 	if (status.innerText === 'Auto On'){
 		status.innerText = 'OFF'
-		button.style.backgroundColor = '#808080'
-		button.value = '0'
+		autobtn.style.backgroundColor = '#808080'
+		autobtn.value = '0'
 	}else{
 		status.innerText = 'Auto On';
-		button.style.backgroundColor = '#FFCD00'
-		button.value = '1'
+		autobtn.style.backgroundColor = '#FFCD00'
+		autobtn.value = '1'
 		document.getElementById('heat').style.backgroundColor = '#808080'
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
