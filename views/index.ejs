@@ -45,9 +45,9 @@
 
       <div id="main-homepage">
         <div id="hvac-control">
-          <button id="auto" class="button hvac-button auto" onclick="auto()"></button>
-          <button id="heat" class="button hvac-button heat" onclick="heat()"></button>
-          <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
+          <button id="auto" class="button hvac-button auto" value="0" onclick="auto()"></button>
+          <button id="heat" class="button hvac-button heat" value="0" onclick="heat()"></button>
+          <button id="ac" class="button hvac-button ac" value="0" onclick="ac()"></button>
         </div>
 	
         
@@ -67,7 +67,7 @@
             <p id="desired-temp-label">SET TEMP</p>
             <p id="desired-temp">60&#730;</p>
             <div id="arrow-down"  onclick="adjustTemp('down', 'desired-temp')"></div>
-            <button id="hold" class="button hold-btn" onclick="hold()">HOLD</button>
+            <button id="hold" class="button hold-btn" value="0" onclick="hold()">HOLD</button>
           </div>
         </div>
       </div>
