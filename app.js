@@ -54,8 +54,9 @@ app.get('/', function(req, res) {
     tempF = Math.round(tempF)
     //console.log(tempF);
   }, 30000)
-  res.locals.tempF = tempF;
+  
   */
+  res.locals.tempF = tempF;
   res.render('index.ejs');
 
 });
