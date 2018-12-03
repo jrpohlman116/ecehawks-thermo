@@ -8,6 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   
+  <script src="/client.js"></script>  
+
   <script>
     function startTime() {
         var today = new Date();
@@ -48,7 +50,7 @@
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
 	
-        <script src="/client.js"></script>  
+        
 
         <div id="temp-container">
           <p id="curr-temp"><%= tempF %>&#730;</p>
