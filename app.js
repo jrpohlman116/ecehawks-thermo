@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
       heat = data.heat;
       ac = data.ac;
       auto = data.auto;
+      console.log("IM IN THE STATUS LISTENER")
   });
 
   socket.on('set', function(data){
@@ -97,6 +98,8 @@ function getTempandLed(){
   tempF = Math.round(tempF);
 
   io.sockets.emit('temp', tempF);
+
+  console.log('heat = ' + heat + 'ac = ' + ac + 'auto = ' + auto);
 
 
   if(heat != 0){
