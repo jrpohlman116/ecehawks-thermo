@@ -140,6 +140,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('time', function (data) {
+    console.log(data)
     offset = data.offsettime
     updateJSON(offset);
     io.sockets.emit('time', data);

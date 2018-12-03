@@ -16,9 +16,9 @@ var setpointMode = 0	//auto heat or cool
 var timeInterval = setTimeout(updateOffset, 2000);
 
 function updateOffset(){
-	socket.emit('time', {
-		offsettime: offset
-	});
+	// socket.emit('time', {
+	// 	offsettime: offset
+	// });
 	
 	socket.emit('setpoint', function(data){
 		weekday: weekday
