@@ -13,15 +13,15 @@
 
       <div id="main">
         <div id="day-selecter-container">
-          <button class="button schedule-btn" onclick="onDaySelectionClick('Weekdays')">Weekdays</button>
-          <button class="button schedule-btn" onclick="onDaySelectionClick('Weekends')">Weekends</button>
+          <button id="Weekdays" class="button schedule-btn" onclick="onDaySelectionClick('Weekdays', 'Weekends')">Weekdays</button>
+          <button id="Weekends" class="button schedule-btn" onclick="onDaySelectionClick('Weekends', 'Weekdays')">Weekends</button>
         </div>
 
         <div id="schedule-selecter-container">
-          <button class="button" onclick="onSetPointClick(1)">1</button>
-          <button class="button" onclick="onSetPointClick(2)">2</button>
-          <button class="button" onclick="onSetPointClick(3)">3</button>
-          <button class="button" onclick="onSetPointClick(4)">4</button>
+          <button id="1" class="button" onclick="onSetPointClick(1)">1</button>
+          <button id="2" class="button" onclick="onSetPointClick(2)">2</button>
+          <button id="3" class="button" onclick="onSetPointClick(3)">3</button>
+          <button id="4" class="button" onclick="onSetPointClick(4)">4</button>
         </div>
 
         <div id="enable-edit-container">
