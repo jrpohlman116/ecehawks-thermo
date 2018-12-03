@@ -40,7 +40,7 @@ var down = document.getElementById('arrow-down');
 //listen for events
 socket.on('temp', function(data){
 	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
-	console.log(data);
+	//console.log(data);
 });
 
 
@@ -148,7 +148,7 @@ function updateJSON(){
 
 
 		socket.emit('time', {
-			offsettime: offset
+			offsettime: userDat
 		});
 	//console.log("it's done in client offse = " + offset);
 }
@@ -302,10 +302,11 @@ function adjustAMPM(){
 
 
 
-
+/*
 
 function setpointJSON(){
 	console.log('in setpoint json')
+
 	socket.emit('setpointday', {
 		isActive: isActive,
 		weekday: weekday,
@@ -322,7 +323,7 @@ function settimeJSON(){
 	let ampm = document.getElementById('ampm-text').innerHTML
 
 	if (ampm === 'PM') {
-		hour -= 12;
+		hour += 12;
 	} else if (ampm = 'AM' && hour === 12) {
 		hour = 0;
 	}
@@ -330,7 +331,7 @@ function settimeJSON(){
 	let userDate = new Date();
 	userDate.setHours(hour);
 	userDate.setMinutes(minute);
-	let setpointTime = userDate.getMilliseconds();
+	setpointTime = userDate.getMilliseconds();
 
 	socket.emit('setpointtime', {
 		setpointTime: setpointTime
@@ -341,7 +342,7 @@ function settempJSON(){
 	console.log('in setTEMP json')
 
 	setpointTemp = document.getElementById('scheduler-temp').innerHTML
-	
+	setpointMode = mode
 	socket.emit('setpointtemp', {
 		setpointTemp: 1,//setpointTemp,
 		setpointMode: 0//setpointMode
@@ -349,7 +350,7 @@ function settempJSON(){
 
 	console.log('done setTEMP json temp: ' + setpointTemp + ' mode: ' + setpointMode)
 }
-
+*/
 
 
 
