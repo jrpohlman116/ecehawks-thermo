@@ -14,7 +14,7 @@ function updateJSON(){
 	let userDate = new Date(year, month, day, hour, minute);
 	let offset = Math.abs(today-userDate);
 
-    
+    offset = 4
 
 		socket.emit('time', {
 			offsettime: offset
