@@ -137,7 +137,6 @@ function auto(){
 
 function updateJSON(){
 	document.getElementById('save-btn').style.display = 'hide'
-	alert('Saved New Date/Time')
 
 	let year = parseInt(document.getElementById('year-text').innerHTML)
 	let month = parseInt(document.getElementById('month-text').innerHTML)
