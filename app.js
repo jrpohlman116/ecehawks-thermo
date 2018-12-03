@@ -88,6 +88,7 @@ io.on('connection', (socket) => {
   console.log('made socket connection', socket.id);
   //io.sockets.emit('temp', tempF); 
   socket.on('status', function (data) {
+    console.log('status')
     heat = data.heat;
     ac = data.ac;
     auto = data.auto;
