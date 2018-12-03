@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const fs = require('fs');
 // const SocketServer = require('ws').Server;
 
 var indexRouter = require('./routes/index');
@@ -55,6 +56,14 @@ theyear();
 
 function updateJSON(time) {
   let timeNum = new Number(time)
+  var obj = {
+    time: null
+  }
+
+  obj.time = timeNum;
+  json = JSON.stringify(obj);
+  fs.writeFileSync('ecehawks.json', json)
+
   console.log('json = ' + timeNum);
   firebase.database().ref('/').update({
     offset: timeNum
