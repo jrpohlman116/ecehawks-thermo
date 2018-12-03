@@ -136,7 +136,7 @@ function auto(){
 }
 
 function updateJSON(){
-	document.getElementById('save-btn').style.display = 'hide'
+	// document.getElementById('save-btn').style.display = 'hide'
 
 	let year = parseInt(document.getElementById('year-text').innerHTML)
 	let month = parseInt(document.getElementById('month-text').innerHTML)
@@ -152,7 +152,7 @@ function updateJSON(){
 	socket.emit('time', {
 		offsettime: offset
 	});
-	// console.log("it's done in client offse = " + offset);
+	console.log("it's done in client offse = " + offset);
 }
 
 
