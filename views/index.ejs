@@ -9,8 +9,13 @@
   <script src="/client.js"></script>  
 
   <script>
-    function startTime() {
-        var today = new Date();
+    function startClock(){
+      var today = new Date()
+      var offset = document.getElementById('timeoffset').textContent
+      startTime(today);
+    }
+    function startTime(today) {
+        today = new Date();
         var h = today.getHours();
         var ampm = 'AM'
         if (h > 12) {
@@ -37,7 +42,7 @@
   </script>
 </head>
 
-<body onload="startTime();">
+<body onload="startClock();">
   <div id="screen">
       <% include ./partials/nav.ejs %>
 
@@ -48,7 +53,7 @@
           <button id="ac" class="button hvac-button ac" value="0" onclick="ac()"></button>
         </div>
 	
-        
+        <p id="timeoffset" style="display: none;"><%= timeOffset %></p>
 
         <div id="temp-container">
           <p id="curr-temp"><%= tempF %>&#730;</p>

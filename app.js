@@ -176,6 +176,7 @@ io.on('connection', (socket) => {
 
 app.get('/', function (req, res) {
   res.locals.tempF = tempF;
+  res.locals.timeOffset = offset;
   res.render('index.ejs');
 });
 app.use('/editdatetime', dateTimeRouter);
