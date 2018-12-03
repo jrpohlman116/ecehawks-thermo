@@ -4,9 +4,11 @@ function heat() {
     if (status.innerText === 'Heat On'){
         status.innerText = 'OFF'
         button.style.backgroundColor = '#808080'
+        button.value = '0'
     }else{
         status.innerText = 'Heat On';
         button.style.backgroundColor = '#FFCD00'
+        button.value = '1'
         document.getElementById('auto').style.backgroundColor = '#808080'
         document.getElementById('ac').style.backgroundColor = '#808080'
     }
@@ -18,8 +20,10 @@ function ac() {
     if (status.innerText === 'AC On'){
         status.innerText = 'OFF'
         button.style.backgroundColor = '#808080'
+        button.value = '0'
     }else{
         status.innerText = 'AC On';
+        button.value = '1'
         button.style.backgroundColor = '#FFCD00'
         document.getElementById('auto').style.backgroundColor = '#808080'
         document.getElementById('heat').style.backgroundColor = '#808080'
@@ -32,9 +36,11 @@ function auto() {
     if (status.innerText === 'Auto On'){
         status.innerText = 'OFF'
         button.style.backgroundColor = '#808080'
+        button.value = '0'
     }else{
         status.innerText = 'Auto On';
         button.style.backgroundColor = '#FFCD00'
+        button.value = '1'
         document.getElementById('heat').style.backgroundColor = '#808080'
         document.getElementById('ac').style.backgroundColor = '#808080'
     }
@@ -45,8 +51,10 @@ function hold() {
     console.log(button.style.backgroundColor)
     if (button.style.backgroundColor == 'rgb(128, 128, 128)'){
         button.style.backgroundColor = '#FFCD00'
+        button.value = '1'
     }else{
         button.style.backgroundColor = '#808080'
+        button.value = '0'
     }
     
 }
