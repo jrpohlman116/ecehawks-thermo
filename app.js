@@ -81,8 +81,8 @@ function updateSetPoints() {
     is_active: is_active,
     is_set: true,
     mode: mode,
-    temp: temp,
-    time: time 
+    temp: setpTemp,
+    time: setTime 
   })
   console.log("setpoints updated in appjs");
 
