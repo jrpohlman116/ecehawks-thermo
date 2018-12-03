@@ -1,6 +1,8 @@
 //establish socket connection
 var socket = io.connect('http://localhost:3000');
-
+var heatIsColored = false;
+var acIsColored = false;
+var autoIsColored = false;
 
 var settemp = document.getElementById('desired-temp-label');
 
@@ -16,14 +18,14 @@ function heat(){
 	var acbtn = document.getElementById('ac');
 	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
-	if (status.innerText === 'Heat On'){
+	if (heatIsColored){
 		status.innerText = 'OFF'
 		heatbtn.style.backgroundColor = '#808080'
-		heatbtn.value = '0'
+		heatIsColored = false;
 	}else{
 		status.innerText = 'Heat On';
+		heatIsColored = true;
 		heatbtn.style.backgroundColor = '#FFCD00'
-		heatbtn.value = '1'
 		document.getElementById('auto').style.backgroundColor = '#808080'
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
@@ -42,16 +44,16 @@ function ac(){
 	var acbtn = document.getElementById('ac');
 	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
-	if (status.innerText === 'AC On'){
+	if (acIsColored){
 		status.innerText = 'OFF'
 		acbtn.style.backgroundColor = '#808080'
-		acbtn.value = '0'
+		acIsColored = false
 	}else{
 		status.innerText = 'AC On';
-		acbtn.value = '1'
 		acbtn.style.backgroundColor = '#FFCD00'
 		document.getElementById('auto').style.backgroundColor = '#808080'
 		document.getElementById('heat').style.backgroundColor = '#808080'
+		acIsColored = true
 	}
 
 	console.log('ac1 = ' + heatbtn.value);
@@ -68,14 +70,14 @@ function auto(){
 	var acbtn = document.getElementById('ac');
 	var autobtn = document.getElementById('auto');
 	var status = document.getElementById('hvac-status');
-	if (status.innerText === 'Auto On'){
+	if (autoIsColored){
 		status.innerText = 'OFF'
 		autobtn.style.backgroundColor = '#808080'
-		autobtn.value = '0'
+		autoIsColored = false;
 	}else{
 		status.innerText = 'Auto On';
 		autobtn.style.backgroundColor = '#FFCD00'
-		autobtn.value = '1'
+		autoIsColored = true;
 		document.getElementById('heat').style.backgroundColor = '#808080'
 		document.getElementById('ac').style.backgroundColor = '#808080'
 	}
@@ -110,7 +112,7 @@ function adjustTemp(direction, id){
 }
 
 //listen for events
-socket.on('status', function(data){
+socket.on('hvac-status', function(data){
 	document.getElementById('hvac-status').innerHTML =  data + '\u02DA' ;
 	console.log(data);
 });

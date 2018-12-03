@@ -148,7 +148,7 @@ function getTempandLed(){
     }
   }
 
-  io.sockets.emit('status', status);
+  io.sockets.emit('hvac-status', status);
 }
 
 
