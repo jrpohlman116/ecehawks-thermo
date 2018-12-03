@@ -246,9 +246,9 @@ p{
   align-items: center;
   flex-wrap: wrap;
   background-color: #4D4D4D;
-  width: 85%;
+  width: 50%;
   height: 266px;
-  margin-left: 20px;
+  margin-left: 92px;
   border-radius: 10px 0 0 10px;
 }
 
@@ -283,17 +283,17 @@ p{
 #arrow-up{
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #FFCD00;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid #FFCD00;
 }  
 
 #arrow-down{
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid #FFCD00;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid #FFCD00;
 }
 
 /* Scheduler CSS */
@@ -417,7 +417,7 @@ p{
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 45%;
+  width: 20%;
   height: 133px;
   margin-left: 20px;
   border-radius: 10px 0 0 10px;

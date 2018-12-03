@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// const SocketServer = require('ws').Server;
 
 var indexRouter = require('./routes/index');
 var dateTimeRouter = require('./routes/editdatetime');
@@ -16,9 +17,15 @@ var LED = new Gpio(21, 'out');
 const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
-var tempF = 0;
+var tempF = 40;
+var socket = require('socket.io')
 
 var app = express();
+var server = app.listen(3000, function(){
+  console.log('listening for requests on 3000');
+});
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,8 +39,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
 
+var io = socket(server);
+io.on('connection', (socket) => {
+  console.log('made socket connection', socket.id);
+  //io.sockets.emit('temp', tempF);  
+});
+
+
+
+
 app.get('/', function(req, res) {
-  res.locals.sensor = sensor;
+  res.locals.tempF = tempF;
   res.render('index.ejs');
 });
 app.use('/editdatetime', dateTimeRouter);
@@ -58,13 +74,15 @@ app.use(function(err, req, res, next) {
 });
 
 function getTempandLed(){
+  //message out to all sockets connected the temp
+  io.sockets.emit('temp', tempF);
+
 	if(i % 2 == 0){
 		LED.writeSync(0);
 	}
 	else{
 		LED.writeSync(1);
   }
-  
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
   i++;
