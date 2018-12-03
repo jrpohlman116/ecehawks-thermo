@@ -12,16 +12,17 @@ var setPointTimeRouter = require('./routes/editsetpointtime');
 var setPointTempRouter = require('./routes/editsetpointtemp');
 
 
-var Gpio = require('onoff').Gpio;
-var LED = new Gpio(21, 'out');
+//var Gpio = require('onoff').Gpio;
+//var LED = new Gpio(21, 'out');
 const sensor = require('ds18b20-raspi');
-var tempInterval = new setInterval(getTempandLed, 1000);
+//var tempInterval = new setInterval(getTempandLed, 1000);
 var i =0;
-var tempF = 0;
+var tempF = 40;
+var socket = require('socket.io')
 
 var app = express();
-var server = app.listen(4000, function(){
-  console.log('listening for requests');
+var server = app.listen(3000, function(){
+  console.log('listening for requests on 3000');
 });
 
 // const PORT = process.env.PORT || 3000;
@@ -48,15 +49,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
 
+var io = socket(server);
+io.on('connection', (socket) => {
+  console.log('made socket connection', socket.id);
+  //io.sockets.emit('temp', tempF);  
+});
+
+
+
+
 app.get('/', function(req, res) {
-  setInterval(() => {
-    tempF = sensor.readSimpleF(1);
-    tempF = Math.round(tempF)
-    console.log(tempF);
-  }, 30000)
   res.locals.tempF = tempF;
   res.render('index.ejs');
-
 });
 app.use('/editdatetime', dateTimeRouter);
 app.use('/setpoints', setPointsRouter);
@@ -80,6 +84,9 @@ app.use(function(err, req, res, next) {
 });
 
 function getTempandLed(){
+  //message out to all sockets connected the temp
+  io.sockets.emit('temp', tempF);
+
 	if(i % 2 == 0){
 		LED.writeSync(0);
 	}

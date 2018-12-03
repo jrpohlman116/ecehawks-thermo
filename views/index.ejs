@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/javascripts/main-page.js"></script>
   <script src="/javascripts/adjust-temp.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
   
   <script>
@@ -47,6 +48,7 @@
           <button id="ac" class="button hvac-button ac" onclick="ac()"></button>
         </div>
 	
+        <script src="/client.js"></script>  
 
         <div id="temp-container">
           <p id="curr-temp"><%= tempF %>&#730;</p>
@@ -68,14 +70,5 @@
         </div>
       </div>
   </div>
-  <script>
-    var HOST = location.origin.replace(/^http/, 'ws')
-    var ws = new WebSocket(HOST)
-    var el = document.getElementById("curr-temp")
-
-    ws.onmessage = function (event) {
-      console.log('New Temp ' + event.data)
-    }
-  </script>
 </body>
 </html>
