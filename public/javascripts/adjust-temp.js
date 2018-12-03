@@ -1,4 +1,4 @@
-function adjustTemp(direction, id){
+function adjustTempOnly(direction, id){
     let dialText = document.getElementById(id);
     let temp = parseInt(dialText.textContent);
 
