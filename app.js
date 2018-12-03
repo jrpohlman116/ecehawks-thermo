@@ -104,11 +104,11 @@ function getTempandLed(){
 
   if(heat != 0){
     if(settemp >= tempF){
-      LEDred.writeSync(0);
+      LEDred.writeSync(1);
       LEDblue.writeSync(0);      
     }
     else{
-      LEDred.writeSync(1);
+      LEDred.writeSync(0);
       LEDblue.writeSync(0);      
     }
   }
