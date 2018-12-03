@@ -18,9 +18,11 @@ var LEDblue = new Gpio(20, 'out');
 
 const sensor = require('ds18b20-raspi');
 var tempInterval = new setInterval(getTempandLed, 1000);
-var i =0;
+var i = 0;
 var tempF = 40;
 var socket = require('socket.io')
+
+var offset = 0;
 
 // firebase shit
 var firebase = require("firebase");
@@ -33,8 +35,8 @@ firebase.initializeApp(config);
 
 n = 2000
 
-function theyear(){
-  n= n+1;
+function theyear() {
+  n = n + 1;
   firebase.database().ref('/').update({
     year: n
   });
@@ -42,18 +44,8 @@ function theyear(){
 
 theyear();
 
-function updateJSON(){
-  console.log("updating json");
-  let year = parseInt(document.getElementById('year-text').textContent)
-  let month = parseInt(document.getElementById('month-text').textContent)
-  let day = parseInt(document.getElementById('day-text').textContent)
-  let hour = parseInt(document.getElementById('hour-text').textContent)
-  let minute = parseInt(document.getElementById('minute-text').textContent)
-
-  let today = new Date();
-  let userDate = new Date(year, month, day, hour, minute);
-  let offset = new Date(Math.abs(today-userDate));
-
+function updateJSON(offset) {
+  console.log("updating json in appjs");
   firebase.database().ref('/datetime').update({
     year: offset.getFullYear(),
     month: offset.getMonth(),
@@ -61,11 +53,11 @@ function updateJSON(){
     hour: offset.getHours(),
     minute: offset.getMinutes()
   })
-  console.log("it's done");
+  console.log("it's done in appjs");
 }
 
 var app = express();
-var server = app.listen(3000, function(){
+var server = app.listen(3000, function () {
   console.log('listening for requests on 3000');
 });
 
@@ -92,24 +84,28 @@ var io = socket(server);
 io.on('connection', (socket) => {
   console.log('made socket connection', socket.id);
   //io.sockets.emit('temp', tempF); 
-  socket.on('status', function(data){
-      heat = data.heat;
-      ac = data.ac;
-      auto = data.auto;
-      console.log("IM IN THE STATUS LISTENER")
+  socket.on('status', function (data) {
+    heat = data.heat;
+    ac = data.ac;
+    auto = data.auto;
+    console.log("IM IN THE STATUS LISTENER")
   });
 
-  socket.on('set', function(data){
-      settemp = data.stemp
+  socket.on('set', function (data) {
+    settemp = data.stemp
   });
 
+  socket.on('time', function (data) {
+    offset = data
+    updateJSON(offset);
+  });
 
 });
 
 
 
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.locals.tempF = tempF;
   res.render('index.ejs');
 });
@@ -119,12 +115,12 @@ app.use('/setpoints/edit/time', setPointTimeRouter);
 app.use('/setpoints/edit/temp', setPointTempRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -134,49 +130,48 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-function getTempandLed(){
+function getTempandLed() {
   //message out to all sockets connected the temp
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF);
 
   io.sockets.emit('temp', tempF);
 
-  console.log('heat = ' + heat + ' ac = ' + ac + ' auto = ' + auto);
 
 
-  if(heat != 0){
-    if(settemp >= tempF){
+  if (heat != 0) {
+    if (settemp >= tempF) {
       LEDred.writeSync(0);
-      LEDblue.writeSync(0);      
+      LEDblue.writeSync(0);
     }
-    else{
+    else {
       LEDred.writeSync(1);
-      LEDblue.writeSync(0);      
+      LEDblue.writeSync(0);
     }
   }
 
-  if(ac != 0){
+  if (ac != 0) {
     console.log("in ac");
-    if(tempF > settemp){
+    if (tempF > settemp) {
       LEDblue.writeSync(1);
-      LEDred.writeSync(0);      
+      LEDred.writeSync(0);
     }
-    else{
+    else {
       LEDblue.writeSync(0);
-      LEDred.writeSync(0);      
+      LEDred.writeSync(0);
     }
   }
 
-  if(auto != 0){
-    if(settemp > tempF){
+  if (auto != 0) {
+    if (settemp > tempF) {
       LEDred.writeSync(1);
       LEDblue.writeSync(0);
     }
-    else if(settemp == tempF){
+    else if (settemp == tempF) {
       LEDred.writeSync(0);
       LEDblue.writeSync(0);
     }
-    else{
+    else {
       LEDred.writeSync(0);
       LEDblue.writeSync(1);
     }
