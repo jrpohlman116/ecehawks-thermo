@@ -47,7 +47,7 @@ theyear();
 function updateJSON(time) {
   offset = new Date(time);
   console.log("updating json in appjs");
-  firebase.database().ref('/datetime').update({
+  firebase.database().ref('/datetime/').update({
     year: offset.getFullYear(),
     month: offset.getMonth(),
     day: offset.getDate(),
