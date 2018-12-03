@@ -1,9 +1,7 @@
 //establish socket connection
 var socket = io.connect('http://localhost:3000');
 
-var heatbtn = document.getElementById('heat');
-var acbtn = document.getElementById('ac');
-var autobtn = document.getElementById('auto');
+
 var settemp = document.getElementById('desired-temp-label');
 var up = document.getElementById('arrrow-up');
 var down = document.getElementById('arrow-down');
@@ -37,9 +35,9 @@ function heat(){
 
 	console.log('heat1 = ' + heatbtn.value);
 	socket.emit('status', {
-		heat: heatbtn.value,
-		ac: acbtn.value,
-		auto: autobtn.value
+		heat: 1,
+		ac: 0,
+		auto: 0
 	});
 	console.log('heat2 = ' + heatbtn.value);
 }	
@@ -63,9 +61,9 @@ function ac(){
 
 	console.log('ac1 = ' + heatbtn.value);
 	socket.emit('status', {
-		heat: heatbtn.value,
-		ac: acbtn.value,
-		auto: autobtn.value
+		heat: 0,
+		ac: 1,
+		auto: 0
 	});
 	console.log('ac2 = ' + acbtn.value);
 }	
@@ -89,9 +87,9 @@ function auto(){
 
 	console.log('auto1 = ' + heatbtn.value);
 	socket.emit('status', {
-		heat: heatbtn.value,
-		ac: acbtn.value,
-		auto: autobtn.value
+		heat: 0,
+		ac: 0,
+		auto: 1
 	});
 	console.log('auto2 = ' + autobtn.value);		
 }
