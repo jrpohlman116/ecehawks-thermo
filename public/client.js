@@ -3,8 +3,13 @@ var socket = io.connect('http://localhost:3000');
 
 var offset = 0;
 
+var timeInterval = new setInterval(updateOffset, 1000);
 
-
+function updateOffset(){
+	socket.emit('time', {
+		offsettime: offset
+	});
+}
 
 var settemp = document.getElementById('desired-temp-label');
 var up = document.getElementById('arrrow-up');
@@ -15,6 +20,15 @@ socket.on('temp', function(data){
 	document.getElementById('curr-temp').innerHTML =  data + '\u02DA' ;
 	console.log(data);
 });
+
+
+
+
+socket.on('time', function(data){
+	offset = data.offsettime
+})
+
+
 
 function heat(){
 	var heatbtn = document.getElementById('heat');

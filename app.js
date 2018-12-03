@@ -103,7 +103,7 @@ io.on('connection', (socket) => {
     console.log("FUCK GIT")
     offset = data.offsettime
     updateJSON(offset);
-
+    io.sockets.emit('time', data);
   });
 
 });
