@@ -40,6 +40,17 @@ socket.on('time', function(data){
 	offset = data.offsettime
 })
 
+socket.on('setpoint', function(data){
+	weekday = data.weekday
+	weekend = data.weekend
+	setpointNum = data. setpointNum
+	isActive = data.isActive
+	setpointTemp = data.setpointTemp
+	setpointTime = data.setpointTime
+	setpointMode = data.setpointMode
+})
+
+
 
 var heatIsColored = false;
 var acIsColored = false;
@@ -278,8 +289,13 @@ function adjustAMPM(){
     }
 }
 
+
+
+
+
+
 function setpointJSON(){
-	socket.emit('time', {
+	socket.emit('setpoint-day', {
 		isActive: isActive,
 		weekday: weekday,
 		weekend: weekend,
@@ -301,21 +317,26 @@ function settimeJSON(){
 	let userDate = new Date();
 	userDate.setHours(hour);
 	userDate.setMinutes(minute);
-	let offset = userDate.getMilliseconds();
+	let setpointTime = userDate.getMilliseconds();
 
-	socket.emit('time', {
-		offsettime: offset
+	socket.emit('setpoint-time', {
+		setpointTime: setpointTime
 	});
 }
 
 function settempJSON(){
 	setpointTemp = document.getElementById('scheduler-temp').innerHTML
 	
-	socket.emit('time', {
+	socket.emit('setpoint-temp', {
 		setpointTemp: setpointTemp,
 		setpointMode: setpointMode
 	});	
 }
+
+
+
+
+
 
 function adjustTemp(direction, id){
     let dialText = document.getElementById(id);

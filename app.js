@@ -24,6 +24,15 @@ var socket = require('socket.io')
 
 var offset = 0;
 
+var weekday = 0;
+var weekend = 0;
+var setpointNum = 0;   //set point number 1-4
+var isActive = 0;    //onoff
+var setpointTemp = 0;  //setpoint temp val
+var setpointTime = 0;  //setpoint time val
+var setpointMode = 0;  //auto heat or cool 
+
+
 // firebase shit
 var firebase = require("firebase");
 var config = {
@@ -100,6 +109,24 @@ io.on('connection', (socket) => {
     updateJSON(offset);
     io.sockets.emit('time', data);
   });
+
+  socket.on('setpoint-day', function(data){
+    isActive = data.isActive
+    weekday = data.weekday
+    weekend = data.weekend
+    setpointNum = data.setpointNum
+  });
+
+  socket.on('setpoint-time', function(data){
+    setpointTime = data.setpointTime
+  });
+
+  socket.on('setpoint-temp', function(data){
+    setpointTemp = data.setpointTemp
+    setpointMode = setpointMode
+
+  });
+
 
 });
 
