@@ -95,9 +95,6 @@ function getTempandLed(){
   }
   tempF = sensor.readSimpleF(1);
   tempF = Math.round(tempF)
-  myFirebaseRef.set({
-	  temp_F: tempF
-  });
   i++;
 }
 
