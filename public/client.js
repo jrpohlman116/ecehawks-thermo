@@ -7,6 +7,6 @@ var temp = document.getElementById('curr-temp');
 
 //listen for events
 socket.on('temp', function(data){
-	temp.innerHTML = '<p>' data '</p>';
+	temp.innerHTML =  data ;
 	console.log(data);
 });
