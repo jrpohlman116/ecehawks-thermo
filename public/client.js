@@ -331,8 +331,8 @@ function settempJSON(){
 	setpointTemp = document.getElementById('scheduler-temp').innerHTML
 	
 	socket.emit('setpointtemp', {
-		setpointTemp: setpointTemp,
-		setpointMode: setpointMode
+		setpointTemp: 1//setpointTemp,
+		setpointMode: 0//setpointMode
 	});	
 
 	console.log('done setTEMP json temp: ' + setpointTemp + ' mode: ' + setpointMode)
