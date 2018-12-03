@@ -90,9 +90,6 @@ function updateJSON(url){
   let today = new Date();
   let userDate = new Date(year, month, day, hour, minute);
   let offset = Math.abs(today-userDate);
-  
-  socket.emit('time', offset);
-  window.location(url)
 
 	socket.emit('time', {
 		offsettime: offset
